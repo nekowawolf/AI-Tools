@@ -1,0 +1,202 @@
+[
+  {
+    "id": 1,
+    "name": "Dreamina",
+    "description": "Image to video generation platform",
+    "categories": ["Video"],
+    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "linkURL": "https://dreamina.capcut.com/"
+  },
+  {
+    "id": 2,
+    "name": "PixVerse AI",
+    "description": "Image to video tools",
+    "categories": ["Video"],
+    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "linkURL": "https://app.pixverse.ai"
+  },
+  {
+    "id": 3,
+    "name": "Higgsfield AI",
+    "description": "Image animation platform",
+    "categories": ["Video"],
+    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "linkURL": "https://higgsfield.ai/"
+  },
+  {
+    "id": 4,
+    "name": "Hailuo AI",
+    "description": "AI video generation",
+    "categories": ["Video"],
+    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "linkURL": "https://hailuoai.video/"
+  },
+  {
+    "id": 5,
+    "name": "Kling AI",
+    "description": "Cinematic AI video generation",
+    "categories": ["Video"],
+    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "linkURL": "https://kling.ai/"
+  },
+  {
+    "id": 6,
+    "name": "Luma AI",
+    "description": "AI video & 3D rendering",
+    "categories": ["Video"],
+    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "linkURL": "https://lumalabs.ai/"
+  },
+  {
+    "id": 7,
+    "name": "Seedance AI",
+    "description": "AI video tools",
+    "categories": ["Video"],
+    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "linkURL": "https://seedance2.ai/"
+  },
+  {
+    "id": 25,
+    "name": "ChatGPT",
+    "description": "Web-based text generation",
+    "categories": ["Image", "Coding", "Chatbot"],
+    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "linkURL": "https://chat.openai.com/"
+  },
+  {
+    "id": 8,
+    "name": "Lovart AI",
+    "description": "Branding & design AI platform",
+    "categories": ["Design"],
+    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "linkURL": "https://www.lovart.ai/"
+  },
+  {
+    "id": 9,
+    "name": "Dribbble",
+    "description": "UI/UX inspiration platform",
+    "categories": ["Design"],
+    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "linkURL": "https://dribbble.com/"
+  },
+  {
+    "id": 10,
+    "name": "Iconsax",
+    "description": "Animated icons library",
+    "categories": ["Design"],
+    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "linkURL": "https://iconsax.io/"
+  },
+  {
+    "id": 11,
+    "name": "Unicorn Studio",
+    "description": "Animated components platform",
+    "categories": ["Design"],
+    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "linkURL": "https://www.unicorn.studio/"
+  },
+  {
+    "id": 12,
+    "name": "Lovable",
+    "description": "AI landing page builder",
+    "categories": ["Coding"],
+    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "linkURL": "https://lovable.dev/"
+  },
+  {
+    "id": 13,
+    "name": "Framer",
+    "description": "Website builder and design to website tool",
+    "categories": ["Coding"],
+    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "linkURL": "https://www.framer.com/"
+  },
+  {
+    "id": 14,
+    "name": "GenSpark AI",
+    "description": "All-in-one AI assistant",
+    "categories": ["Coding"],
+    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "linkURL": "https://www.genspark.ai/"
+  },
+  {
+    "id": 15,
+    "name": "YouMind",
+    "description": "Prompt management and AI thinking platform",
+    "categories": ["Prompt"],
+    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "linkURL": "https://youmind.com/"
+  },
+  {
+    "id": 16,
+    "name": "Spline",
+    "description": "3D design tool",
+    "categories": ["3D"],
+    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "linkURL": "https://spline.design/"
+  },
+  {
+    "id": 17,
+    "name": "Cartwheel",
+    "description": "3D character animation",
+    "categories": ["3D"],
+    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "linkURL": "https://getcartwheel.com/"
+  },
+  {
+    "id": 18,
+    "name": "VRoid Studio",
+    "description": "Anime 3D avatar creator",
+    "categories": ["3D"],
+    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "linkURL": "https://vroid.com/"
+  },
+  {
+    "id": 19,
+    "name": "Hunyuan 3D",
+    "description": "AI 3D generation",
+    "categories": ["3D"],
+    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "linkURL": "https://3d.hunyuanglobal.com/"
+  },
+  {
+    "id": 20,
+    "name": "Mixamo",
+    "description": "Rigging & animations platform",
+    "categories": ["3D"],
+    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "linkURL": "https://www.mixamo.com/"
+  },
+  {
+    "id": 21,
+    "name": "TRELLIS 3D",
+    "description": "AI 3D generation",
+    "categories": ["3D"],
+    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "linkURL": "https://microsoft.github.io/TRELLIS.2/"
+  },
+  {
+    "id": 22,
+    "name": "Hyper3D AI",
+    "description": "AI 3D tools",
+    "categories": ["3D"],
+    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "linkURL": "https://hyper3d.ai/"
+  },
+  {
+    "id": 23,
+    "name": "Sloyd AI",
+    "description": "Procedural 3D assets",
+    "categories": ["3D"],
+    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "linkURL": "https://www.sloyd.ai/"
+  },
+  {
+    "id": 24,
+    "name": "Motion Sites",
+    "description": "Website motion inspiration",
+    "categories": ["Prompt"],
+    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "linkURL": "https://motionsites.ai/"
+  }
+]

@@ -1,0 +1,87 @@
+Kategorisasi Tools
+🎬 Image / Video Generation
+Dreamina
+ — image to video
+PixVerse AI
+ — image to video
+Higgsfield AI
+ — animasi image
+Hailuo AI
+ — AI video generation
+Kling AI
+ — cinematic AI video
+Luma AI
+ — AI video & 3D
+Seedance AI
+ — AI video
+🎨 Design & Creative Tools
+Lovart AI
+ — branding & design AI
+Dribbble
+ — UI/UX inspiration
+Iconsax
+ — animated icons
+Unicorn Studio
+ — animated components
+Framer
+ — design to website
+💻 Website / Coding / Builder AI
+Lovable
+ — AI landing page builder
+Framer
+ — website builder
+GenSpark AI
+ — all-in-one AI assistant
+🧠 Prompt & Productivity
+YouMind
+ — prompt management / AI thinking
+🧊 3D & Animation
+Spline
+ — 3D design
+Cartwheel
+ — 3D animation
+VRoid Studio
+ — anime 3D avatar
+Hunyuan 3D
+ — AI 3D generation
+Mixamo
+ — rigging & animations
+TRELLIS 3D
+ — AI 3D generation
+Hyper3D AI
+ — AI 3D tools
+Sloyd AI
+ — procedural 3D assets
+🎞 Motion & Animation
+Motion Sites
+ — website motion inspiration
+Higgsfield AI
+ — image animation
+Cartwheel
+ — character animation
+
+ https://motionsites.ai/ (website bikin animasi)
+https://lovable.dev/ (bikin landing page)
+https://dribbble.com/ (referensi ide website)
+https://higgsfield.ai/ (animasin images)
+https://iconsax.io/ (animasi icon)
+https://www.unicorn.studio/ (animasi component kaya reactbits)
+https://dreamina.capcut.com/ (images to videos)
+https://www.lovart.ai/ (design brand ai)
+https://www.genspark.ai/ (all in one ai)
+https://spline.design/ (3D design)
+https://www.framer.com/ (design to website)
+https://youmind.com/ (prompt ai)
+https://app.pixverse.ai (images to video)
+https://getcartwheel.com/ (3D animasi)
+https://vroid.com/ (3D)
+https://3d.hunyuanglobal.com/, (3D)
+https://www.mixamo.com/, (3D) https://microsoft.github.io/TRELLIS.2/ (3D)
+https://hyper3d.ai/ (3D)
+https://www.sloyd.ai/ (3D)
+
+// Images to videos
+https://hailuoai.video/,
+https://kling.ai/,
+https://lumalabs.ai/, 
+https://seedance2.ai/

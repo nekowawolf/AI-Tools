@@ -8,19 +8,9 @@ import { FaGithub, FaTelegram, FaBars } from 'react-icons/fa';
 import { toggleDarkMode } from '@/utils/darkmode';
 
 export default function Header() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
-
-  useEffect(() => {
-    const current =
-      typeof window !== 'undefined' &&
-      localStorage.getItem('darkmode') === 'active';
-    setIsDarkMode(current);
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -55,7 +45,6 @@ export default function Header() {
 
   const onToggleTheme = () => {
     toggleDarkMode();
-    setIsDarkMode((v) => !v);
   };
 
   return (
@@ -135,18 +124,13 @@ export default function Header() {
                 <FaXTwitter />
               </Link>
 
-              <button
+                <button
                 aria-label="Toggle dark mode"
                 onClick={onToggleTheme}
                 className="card-color w-9 h-9 text-fill-color rounded-full border border-color flex items-center justify-center text-lg hover:opacity-80 cursor-pointer"
               >
-                {mounted ? (
-                  <>
-                    {!isDarkMode ? <FaSun /> : <FaMoon />}
-                  </>
-                ) : (
-                  <div className="w-5 h-5" />
-                )}
+                <FaSun className="theme-icon-sun" />
+                <FaMoon className="theme-icon-moon" />
               </button>
 
               <button

@@ -138,3 +138,17 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+.theme-icon-sun {
+  display: block;
+}
+.theme-icon-moon {
+  display: none;
+}
+
+.darkmode .theme-icon-sun {
+  display: none;
+}
+.darkmode .theme-icon-moon {
+  display: block;
+}

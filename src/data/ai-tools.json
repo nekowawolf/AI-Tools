@@ -99,7 +99,7 @@
     "id": 13,
     "name": "Framer",
     "description": "A premier professional website builder that bridges the gap between design and development, allowing users to create high-performance, responsive, and visually stunning sites with intuitive no-code tools.",
-    "categories": ["Coding","Design"],
+    "categories": ["Design"],
     "imgURL": "https://pbs.twimg.com/profile_images/2001241755329376257/sVbl4dmW_400x400.jpg",
     "linkURL": "https://www.framer.com/"
   },
@@ -222,5 +222,213 @@
     "categories": ["Image", "Coding", "Chatbot"],
     "imgURL": "https://pbs.twimg.com/profile_images/1885410181409820672/ztsaR0JW_400x400.jpg",
     "linkURL": "https://chat.openai.com/"
+  },
+  {
+    "id": 29,
+    "name": "AI Studio",
+    "description": "A fast, web-based prototyping environment by Google for building with the Gemini model family. It allows developers to test prompts, tune models, and handle multimodal inputs including code, images, and audio with seamless API integration.",
+    "categories": ["Image", "Coding", "Audio"],
+    "imgURL": "https://pbs.twimg.com/profile_images/1957558782067896323/6jXpPKD4_400x400.png",
+    "linkURL": "https://aistudio.google.com/"
+  },
+  { 
+    "id": 30,
+    "name": "Claude",
+    "description": "A next-generation AI assistant by Anthropic known for its advanced reasoning and coding capabilities. It features a large context window and the Artifacts UI, enabling developers to write, debug, and preview code in real-time with high accuracy.",
+    "categories": ["Coding"],
+    "imgURL": "https://pbs.twimg.com/profile_images/1950950107937185792/QOfEjFoJ_400x400.jpg",
+    "linkURL": "https://claude.ai/"
+  },
+  { 
+    "id": 31,
+    "name": "Gemini",
+    "description": "Google's most capable AI assistant built to be natively multimodal. It excels at reasoning across text, images, and code, offering a seamless experience for creative writing, complex programming assistance, and high-quality image generation.",
+    "categories": ["Chatbot", "Coding", "Image", "Video"],
+    "imgURL": "https://pbs.twimg.com/profile_images/1940093473564073984/jiafRcO0_400x400.png",
+    "linkURL": "https://gemini.google.com/"
+  },
+  { 
+    "id": 32,
+    "name": "Meta AI",
+    "description": "An advanced AI assistant powered by Llama 3 that integrates across Meta's ecosystem. It offers fast conversational responses, complex coding assistance, and the ability to generate high-quality images and short animations or videos from simple text prompts.",
+    "categories": ["Coding","Video","Chatbot"],
+    "imgURL": "https://pbs.twimg.com/profile_images/1453818753880190978/HqrrEcrI_400x400.png",
+    "linkURL": "https://www.meta.ai/"
+  },
+  { 
+    "id": 33,
+    "name": "Qwen",
+    "description": "A powerful series of large language models developed by Alibaba Cloud, designed for high-performance reasoning and multilingual support. It excels in complex coding tasks, conversational AI, and advanced multimodal understanding, including video and image analysis.",
+    "categories": ["Coding","Video","Chatbot"],
+    "imgURL": "https://pbs.twimg.com/profile_images/1894073235379273728/0ROUmdkE_400x400.jpg",
+    "linkURL": "https://qwen.ai/"
+  },
+  { 
+    "id": 34,
+    "name": "DeepSeek",
+    "description": "An advanced open-source AI model series optimized for high-level reasoning and programming. It is widely recognized for its state-of-the-art coding capabilities, offering developers an efficient and powerful alternative for complex logic, math, and software development tasks.",
+    "categories": ["Coding","Chatbot"],
+    "imgURL": "https://pbs.twimg.com/profile_images/1717417613775757312/Uk1zNOj4_400x400.jpg",
+    "linkURL": "https://chat.deepseek.com/"
+  },
+  { 
+    "id": 35,
+    "name": "Kimi",
+    "description": "An intelligent AI assistant developed by Moonshot AI, specializing in long-context processing. It excels at analyzing massive documents, complex coding projects, and providing precise conversational insights with a focus on high-capacity memory and efficiency.",
+    "categories": ["Coding","Chatbot"],
+    "imgURL": "https://pbs.twimg.com/profile_images/1910294000927645696/QseOV0uF_400x400.png",
+    "linkURL": "https://www.kimi.com/"
+  },
+  { 
+    "id": 36,
+    "name": "Grok",
+    "description": "An AI developed by xAI that features real-time access to global information via the X platform. Designed with a unique sense of wit, it offers powerful capabilities in coding, conversational reasoning, and high-fidelity image and video generation through its advanced multimodal architecture.",
+    "categories": ["Chatbot","Image","Coding"],
+    "imgURL": "https://pbs.twimg.com/profile_images/2052556247870865408/oGdJ7sXt_400x400.jpg",
+    "linkURL": "https://grok.com/"
+  },
+  { 
+    "id": 37,
+    "name": "Bolt",
+    "description": "An AI-powered full-stack web development platform that allows users to prompt, build, and deploy entire applications directly in the browser. It combines advanced reasoning with a live development environment to automate coding, project structure, and deployment in seconds.",
+    "categories": ["Coding"],
+    "imgURL": "https://pbs.twimg.com/profile_images/2018401342755364864/xVn-9oYv_400x400.jpg",
+    "linkURL": "https://bolt.new/"
+  },
+  { 
+    "id": 38,
+    "name": "Copilot",
+    "description": "An AI-powered developer tool that provides real-time code suggestions and entire functions directly within the IDE. Trained on billions of lines of code, it acts as an AI pair programmer to accelerate development, automate repetitive tasks, and improve code quality across numerous languages.",
+    "categories": ["Coding"],
+    "imgURL": "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/github-copilot-icon.png",
+    "linkURL": "https://github.com/copilot"
+  },
+  { 
+    "id": 39,
+    "name": "Cursor",
+    "description": "An AI-native code editor built as a fork of VS Code, designed for deeply integrated software development. It features advanced codebase indexing, allowing the AI to understand entire projects, automate complex refactors, and generate code with full project context.",
+    "categories": ["Coding"],
+    "imgURL": "https://pbs.twimg.com/profile_images/1970182748146180096/dhZeXi_X_400x400.jpg",
+    "linkURL": "https://cursor.com/"
+  },
+  { 
+    "id": 40,
+    "name": "Windsurf",
+    "description": "An AI-powered integrated development environment (IDE) that introduces 'Flow'—a state-of-the-art agentic workflow. It allows the AI to act as an independent collaborator that can see, think, and act across your entire codebase to solve complex tasks autonomously.",
+    "categories": ["Coding"],
+    "imgURL": "https://pbs.twimg.com/profile_images/1916931366161420291/020yjIAw_400x400.jpg",
+    "linkURL": "https://windsurf.com/"
+  },
+  { 
+    "id": 41,
+    "name": "Antigravity",
+    "description": "A high-performance development platform by Google designed to streamline the creation of AI-powered applications. It provides developers with integrated tools to build, test, and scale sophisticated software, leveraging Google’s advanced infrastructure and model capabilities.",
+    "categories": ["Coding"],
+    "imgURL": "https://pbs.twimg.com/profile_images/1990585614279049216/-Zz6T2nk_400x400.png",
+    "linkURL": "https://antigravity.google/"
+  },
+  { 
+    "id": 42,
+    "name": "Trae AI",
+    "description": "An adaptive, AI-native integrated development environment (IDE) developed by ByteDance. It enhances developer productivity through 'Builder Mode' and intelligent context-awareness, transforming natural language instructions into functional code within a high-performance workspace.",
+    "categories": ["Coding"],
+    "imgURL": "https://pbs.twimg.com/profile_images/2026214724346724353/SVLjVHmE_400x400.jpg",
+    "linkURL": "https://www.trae.ai/"
+  },
+  { 
+    "id": 43,
+    "name": "Blackbox AI",
+    "description": "A powerful AI coding assistant designed to accelerate software development by providing ultra-fast code autocomplete, integrated chat for debugging, and the ability to search across millions of open-source repositories and documents in real-time.",
+    "categories": ["Coding"],
+    "imgURL": "https://pbs.twimg.com/profile_images/2009476984460431360/JBofkqLd_400x400.jpg",
+    "linkURL": "https://www.blackbox.ai/"
+  },
+  { 
+    "id": 44,
+    "name": "v0",
+    "description": "An AI-powered generative UI system by Vercel that streamlines web development. It translates natural language prompts into high-quality, production-ready React components using Tailwind CSS and Shadcn UI, featuring a real-time preview and seamless integration into modern web frameworks.",
+    "categories": ["Coding","Chatbot"],
+    "imgURL": "https://pbs.twimg.com/profile_images/1955397769138667520/XoWT5Huy_400x400.jpg",
+    "linkURL": "https://v0.app/"
+  },
+  { 
+    "id": 45,
+    "name": "",
+    "description": "",
+    "categories": ["Coding","Chatbot"],
+    "imgURL": "https://pbs.twimg.com/profile_images/1955397769138667520/XoWT5Huy_400x400.jpg",
+    "linkURL": "https://v0.app/"
+  },
+  { 
+    "id": 46,
+    "name": "Scite",
+    "description": "An award-winning platform that helps researchers discover and evaluate scientific articles via Smart Citations. It allows users to see how a publication has been cited by providing the context of the citation and a classification describing whether it provides supporting or contrasting evidence.",
+    "categories": ["Research"],
+    "imgURL": "https://pbs.twimg.com/profile_images/1052280849733955584/8fYtjSQd_400x400.jpg",
+    "linkURL": "https://scite.ai/"
+  },
+  { 
+    "id": 47,
+    "name": "Elicit",
+    "description": "An AI research assistant designed to automate literature reviews and data extraction from academic papers. It helps researchers find relevant studies without perfect keyword matches, summarizes key findings, and extracts specific data points across multiple documents simultaneously.",
+    "categories": ["Research"],
+    "imgURL": "https://pbs.twimg.com/profile_images/1705327033533030400/MCsBdMk1_400x400.png",
+    "linkURL": "https://elicit.com/"
+  },
+  { 
+    "id": 48,
+    "name": "Research Rabbit",
+    "description": "An innovative citation-based discovery tool often called the 'Spotify for Papers.' It allows researchers to create dynamic collections of literature and visualizes connections between authors and papers through interactive maps to discover hidden research networks.",
+    "categories": ["Research"],
+    "imgURL": "https://pbs.twimg.com/profile_images/1983772825812189184/IXDTOqLX_400x400.jpg",
+    "linkURL": "https://researchrabbit.ai/"
+  },
+  { 
+    "id": 49,
+    "name": "SciSpace",
+    "description": "An all-in-one AI platform for scientific research that simplifies reading and understanding academic papers. It features an interactive AI Copilot to explain complex text, math, and tables in real-time, alongside a massive repository and integrated literature review tools.",
+    "categories": ["Research"],
+    "imgURL": "https://pbs.twimg.com/profile_images/2040048440722501632/rVFnFaIY_400x400.jpg",
+    "linkURL": "https://scispace.com/"
+  },
+  { 
+    "id": 50,
+    "name": "Consensus",
+    "description": "A specialized search engine that uses AI to extract and distill findings from scientific research. It allows users to ask questions and receive instant answers backed by peer-reviewed studies, providing a 'consensus' meter to show the prevailing scientific opinion on a topic.",
+    "categories": ["Research"],
+    "imgURL": "https://pbs.twimg.com/profile_images/1932855570832211968/3JYBuOh7_400x400.jpg",
+    "linkURL": "https://consensus.app/"
+  },
+  { 
+    "id": 51,
+    "name": "Suno",
+    "description": "An innovative AI music creation platform that generates full-length songs, including realistic vocals, instrumentation, and lyrics, from simple text descriptions. It enables anyone to produce high-quality audio tracks across a wide variety of genres in seconds.",
+    "categories": ["Audio"],
+    "imgURL": "https://pbs.twimg.com/profile_images/1917978610683514880/JbHhI1yH_400x400.jpg",
+    "linkURL": "https://suno.com/"
+  },
+  { 
+    "id": 52,
+    "name": "Udio",
+    "description": "A state-of-the-art AI music generation platform renowned for its high-fidelity audio production and professional-grade vocal realism. It empowers users to compose, extend, and remix tracks from text prompts, offering granular control over musical styles, structure, and emotional nuance.",
+    "categories": ["Audio"],
+    "imgURL": "https://pbs.twimg.com/profile_images/1923492263453155328/bM9OD2NH_400x400.jpg",
+    "linkURL": "https://udio.com/"
+  },
+  { 
+    "id": 53,
+    "name": "ElevenLabs",
+    "description": "The world's most advanced AI audio platform specializing in lifelike speech synthesis and voice cloning. It offers high-fidelity text-to-speech, real-time dubbing, and emotive voice generation in dozens of languages, catering to content creators, developers, and storytellers.",
+    "categories": ["Audio"],
+    "imgURL": "https://pbs.twimg.com/profile_images/2047043946807754752/7xmvtysh_400x400.png",
+    "linkURL": "https://elevenlabs.io/"
+  },
+  { 
+    "id": 54,
+    "name": "Hume AI",
+    "description": "An emotionally intelligent AI platform featuring the Empathic Voice Interface (EVI). It is designed to understand and react to human vocal modulations, including tone, rhythm, and pitch, enabling more natural and empathetic human-AI interactions.",
+    "categories": ["Audio"],
+    "imgURL": "https://pbs.twimg.com/profile_images/1970984354802278400/SurUlOof_400x400.jpg",
+    "linkURL": "https://hume.ai/"
   }
 ]

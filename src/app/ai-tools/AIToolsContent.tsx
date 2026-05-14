@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Pagination from '@/components/Pagination';
@@ -8,30 +8,46 @@ import aiToolsData from '@/data/ai-tools.json';
 
 const ITEMS_PER_PAGE = 8;
 
-// Categories
 const categories = [
     "Image",
-    "Coding",
+    "Design",
     "All",
     "Video",
     "Audio",
     "Chatbot",
+    "Coding",
     "3D",
-    "Design",
+    "Research",
 ];
+
+function shuffleArray<T>(array: T[]): T[] {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+}
 
 export default function AIToolsContent() {
     const [searchQuery, setSearchQuery] = useState('');
     const [activeCategory, setActiveCategory] = useState('All');
     const [currentPage, setCurrentPage] = useState(1);
+    const [shuffledData, setShuffledData] = useState<typeof aiToolsData>([]);
+
+    useEffect(() => {
+        setShuffledData(shuffleArray(aiToolsData));
+    }, []);
 
     const filteredTools = useMemo(() => {
-        return aiToolsData.filter(tool => {
+        const source = shuffledData.length > 0 ? shuffledData : aiToolsData;
+        
+        return source.filter(tool => {
             const matchesSearch = tool.name.toLowerCase().includes(searchQuery.toLowerCase());
             const matchesCategory = activeCategory === 'All' || (tool.categories && tool.categories.includes(activeCategory));
             return matchesSearch && matchesCategory;
         });
-    }, [searchQuery, activeCategory]);
+    }, [searchQuery, activeCategory, shuffledData]);
 
     const totalItems = filteredTools.length;
     const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
@@ -128,7 +144,7 @@ export default function AIToolsContent() {
                             </Link>
                         ))
                     ) : (
-                        <div id="fillcommunity" className="col-span-full w-full flex-col flex gap-4">
+                        <div className="col-span-full w-full flex-col flex gap-4">
                             <div className="text-center py-10">
                                 <Image
                                     src="https://nekowawolf.github.io/cdn-images/images/2026/1771661079_pixchan.png"

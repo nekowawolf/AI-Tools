@@ -2,201 +2,225 @@
   {
     "id": 1,
     "name": "Dreamina",
-    "description": "Image to video generation platform",
-    "categories": ["Video"],
-    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "description": "An all-in-one AI creative platform by CapCut that empowers users to generate high-quality images and cinematic videos from text prompts or existing images with advanced motion control.",
+    "categories": ["Video","Image"],
+    "imgURL": "https://cdn-1.webcatalog.io/catalog/dreamina-ai/dreamina-ai-icon-filled-256.png?v=1737467950126",
     "linkURL": "https://dreamina.capcut.com/"
   },
   {
     "id": 2,
     "name": "PixVerse AI",
-    "description": "Image to video tools",
+    "description": "A versatile AI video generation platform that enables users to create high-quality cinematic videos from text, images, or existing video references with advanced motion control and professional editing features.",
     "categories": ["Video"],
-    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "imgURL": "https://pbs.twimg.com/profile_images/1938440857088364545/5dOHHvL3_400x400.jpg",
     "linkURL": "https://app.pixverse.ai"
   },
   {
     "id": 3,
     "name": "Higgsfield AI",
-    "description": "Image animation platform",
+    "description": "An all-in-one generative AI platform designed for professional-grade video production, offering high-fidelity cinematic video generation, advanced character consistency, and precise creative controls for filmmakers and marketers.",
     "categories": ["Video"],
-    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "imgURL": "https://pbs.twimg.com/profile_images/2029949430317637632/6qPl4MTS_400x400.jpg",
     "linkURL": "https://higgsfield.ai/"
   },
   {
     "id": 4,
     "name": "Hailuo AI",
-    "description": "AI video generation",
+    "description": "A cutting-edge AI video generator powered by the MiniMax model, renowned for creating hyper-realistic human movements, complex character interactions, and high-fidelity cinematic scenes from simple text prompts.",
     "categories": ["Video"],
-    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "imgURL": "https://pbs.twimg.com/profile_images/1892843516251815936/Wf7QhAgR_400x400.jpg",
     "linkURL": "https://hailuoai.video/"
   },
   {
     "id": 5,
     "name": "Kling AI",
-    "description": "Cinematic AI video generation",
+    "description": "A world-leading AI video generation model capable of producing high-definition cinematic videos up to 2 minutes long, featuring large-scale motion, complex physical simulations, and stunning photorealistic quality.",
     "categories": ["Video"],
-    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "imgURL": "https://pbs.twimg.com/profile_images/1905183334021697536/8agjzVoq_400x400.jpg",
     "linkURL": "https://kling.ai/"
   },
   {
     "id": 6,
     "name": "Luma AI",
-    "description": "AI video & 3D rendering",
+    "description": "A powerful AI video creation platform featuring Dream Machine, designed to generate high-quality, realistic videos with consistent physics and cinematic storytelling from text and images at an impressive speed.",
     "categories": ["Video"],
-    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "imgURL": "https://pbs.twimg.com/profile_images/1861041306258288640/V5yJEmjK_400x400.jpg",
     "linkURL": "https://lumalabs.ai/"
   },
   {
     "id": 7,
     "name": "Seedance AI",
-    "description": "AI video tools",
+    "description": "A sophisticated AI video generation tool specializing in cinematic character consistency and creative visual effects, enabling creators to transform ideas into high-definition videos with precise motion and style control.",
     "categories": ["Video"],
-    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "imgURL": "https://assets.linkstartai.com/icon/agents/seedance-2.png",
     "linkURL": "https://seedance2.ai/"
-  },
-  {
-    "id": 25,
-    "name": "ChatGPT",
-    "description": "Web-based text generation",
-    "categories": ["Image", "Coding", "Chatbot"],
-    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
-    "linkURL": "https://chat.openai.com/"
   },
   {
     "id": 8,
     "name": "Lovart AI",
-    "description": "Branding & design AI platform",
+    "description": "An AI-powered design and illustration platform that enables users to generate high-quality graphic assets, unique artworks, and creative layouts through intuitive text-to-image and design enhancement tools.",
     "categories": ["Design"],
-    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "imgURL": "https://pbs.twimg.com/profile_images/2012911781404958721/n4DSHAUq_400x400.png",
     "linkURL": "https://www.lovart.ai/"
   },
   {
     "id": 9,
     "name": "Dribbble",
-    "description": "UI/UX inspiration platform",
+    "description": "The world's leading community for creative professionals to share, grow, and get hired, serving as a premier destination for design inspiration, portfolio showcasing, and digital talent networking.",
     "categories": ["Design"],
-    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "imgURL": "https://pbs.twimg.com/profile_images/2011144171994710016/MTyAsXQl_400x400.jpg",
     "linkURL": "https://dribbble.com/"
   },
   {
     "id": 10,
     "name": "Iconsax",
-    "description": "Animated icons library",
+    "description": "A premium and comprehensive icon library for UI/UX designers, featuring thousands of modern icons in multiple styles such as linear, bold, and bulk, optimized for web and mobile application development.",
     "categories": ["Design"],
-    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "imgURL": "https://pbs.twimg.com/profile_images/2044389513557151744/cRsOQ70r_400x400.png",
     "linkURL": "https://iconsax.io/"
   },
   {
     "id": 11,
     "name": "Unicorn Studio",
-    "description": "Animated components platform",
+    "description": "A powerful design tool for creating high-performance web effects and animations, allowing designers to build stunning visual interactions, shaders, and dynamic assets with no-code ease.",
     "categories": ["Design"],
-    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "imgURL": "https://pbs.twimg.com/profile_images/1922679431966883840/LNLjvNTG_400x400.jpg",
     "linkURL": "https://www.unicorn.studio/"
   },
   {
     "id": 12,
     "name": "Lovable",
-    "description": "AI landing page builder",
+    "description": "An advanced AI-powered full-stack web development platform that enables users to build, deploy, and iterate on complex applications through natural language prompts with production-ready code.",
     "categories": ["Coding"],
-    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "imgURL": "https://pbs.twimg.com/profile_images/1915780454092779520/PIxdzAvI_400x400.jpg",
     "linkURL": "https://lovable.dev/"
   },
   {
     "id": 13,
     "name": "Framer",
-    "description": "Website builder and design to website tool",
-    "categories": ["Coding"],
-    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "description": "A premier professional website builder that bridges the gap between design and development, allowing users to create high-performance, responsive, and visually stunning sites with intuitive no-code tools.",
+    "categories": ["Coding","Design"],
+    "imgURL": "https://pbs.twimg.com/profile_images/2001241755329376257/sVbl4dmW_400x400.jpg",
     "linkURL": "https://www.framer.com/"
   },
   {
     "id": 14,
     "name": "GenSpark AI",
-    "description": "All-in-one AI assistant",
-    "categories": ["Coding"],
-    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "description": "An innovative AI-powered search agent that goes beyond traditional search by generating 'Sparkpages'—custom, organized, and ad-free pages that synthesize information from multiple trusted sources into a single view.",
+    "categories": ["Chatbot"],
+    "imgURL": "https://pbs.twimg.com/profile_images/1782715833099382784/R6nadR8G_400x400.jpg",
     "linkURL": "https://www.genspark.ai/"
   },
   {
     "id": 15,
     "name": "YouMind",
-    "description": "Prompt management and AI thinking platform",
+    "description": "An advanced prompt engineering and management platform that provides curated libraries and optimization tools to help creators unlock the full potential of generative AI models across various domains.",
     "categories": ["Prompt"],
-    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "imgURL": "https://pbs.twimg.com/profile_images/1848213973658943488/NfCQg7Dr_400x400.jpg",
     "linkURL": "https://youmind.com/"
   },
   {
     "id": 16,
     "name": "Spline",
-    "description": "3D design tool",
+    "description": "An intuitive, web-based 3D design tool that enables creators to build interactive 3D experiences, models, and animations with real-time collaboration and seamless export for web and app development.",
     "categories": ["3D"],
-    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "imgURL": "https://pbs.twimg.com/profile_images/1583261404001435648/oL_UX6EJ_400x400.jpg",
     "linkURL": "https://spline.design/"
   },
   {
     "id": 17,
     "name": "Cartwheel",
-    "description": "3D character animation",
+    "description": "An innovative AI-powered 3D animation tool that transforms text prompts or video references into high-quality character motions, streamlining the animation workflow for game developers and digital artists.",
     "categories": ["3D"],
-    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "imgURL": "https://pbs.twimg.com/profile_images/1786427246384742400/59M51Gfr_400x400.jpg",
     "linkURL": "https://getcartwheel.com/"
   },
   {
     "id": 18,
     "name": "VRoid Studio",
-    "description": "Anime 3D avatar creator",
+    "description": "A specialized 3D character creation tool that allows users to design highly customizable anime-style avatars with intuitive drawing-based features for hair, clothing, and body textures.",
     "categories": ["3D"],
-    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "imgURL": "https://pbs.twimg.com/profile_images/1454703792587702272/lngS73cZ_400x400.jpg",
     "linkURL": "https://vroid.com/"
   },
   {
     "id": 19,
     "name": "Hunyuan 3D",
-    "description": "AI 3D generation",
+    "description": "A state-of-the-art generative AI framework that creates high-fidelity 3D assets from single images or text prompts, featuring rapid synthesis and high geometric accuracy for efficient professional workflows.",
     "categories": ["3D"],
-    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "imgURL": "https://cdn-3d-prod.hunyuan.tencent.com/public/7d5151ff31a08ba6e17e.webp",
     "linkURL": "https://3d.hunyuanglobal.com/"
   },
   {
     "id": 20,
     "name": "Mixamo",
-    "description": "Rigging & animations platform",
+    "description": "An Adobe-powered platform that simplifies the 3D animation process through automated character rigging and a vast library of high-quality motion-captured animations for game development and visual effects.",
     "categories": ["3D"],
-    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "imgURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0VDTYqntNaYoeyykHoESReGQgJNV9LfBIYg&s",
     "linkURL": "https://www.mixamo.com/"
   },
   {
     "id": 21,
     "name": "TRELLIS 3D",
-    "description": "AI 3D generation",
+    "description": "A state-of-the-art Large Language Model-based system for 3D generation that produces high-quality, structured 3D assets with superior geometric detail and realistic textures from a single image.",
     "categories": ["3D"],
-    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
-    "linkURL": "https://microsoft.github.io/TRELLIS.2/"
+    "imgURL": "https://trellis3d.net/logo.png",
+    "linkURL": "https://trellis3d.net/"
   },
   {
     "id": 22,
     "name": "Hyper3D AI",
-    "description": "AI 3D tools",
+    "description": "An advanced generative AI platform designed for rapid 3D asset creation, offering high-fidelity modeling and texture generation from text or images to accelerate game development and spatial computing workflows.",
     "categories": ["3D"],
-    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "imgURL": "https://pbs.twimg.com/profile_images/1932867461642366976/Yze9x58F_400x400.jpg",
     "linkURL": "https://hyper3d.ai/"
   },
   {
     "id": 23,
     "name": "Sloyd AI",
-    "description": "Procedural 3D assets",
+    "description": "A rapid 3D modeling platform that leverages parametric AI to generate clean, optimized, and fully UV-unwrapped 3D assets from a vast library of customizable templates and text prompts.",
     "categories": ["3D"],
-    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "imgURL": "https://pbs.twimg.com/profile_images/1554059765164146690/y5DAIRHz_400x400.jpg",
     "linkURL": "https://www.sloyd.ai/"
   },
   {
     "id": 24,
     "name": "Motion Sites",
-    "description": "Website motion inspiration",
-    "categories": ["Prompt"],
-    "imgURL": "https://i.pinimg.com/736x/8a/7a/df/8a7adf1a7327ba350cace313ceddccb3.jpg",
+    "description": "A dedicated prompt engineering hub for AI video creators, offering a curated library of cinematic prompts, camera movement techniques, and stylistic references to maximize the output of generative video models.",
+    "categories": ["Prompt", "Design"],
+    "imgURL": "https://nekowawolf.github.io/cdn-images/images/2026/1778721085_motionsites-logo.png",
     "linkURL": "https://motionsites.ai/"
+  },
+  {
+    "id": 25,
+    "name": "Perplexity",
+    "description": "A powerful AI-driven conversational search engine that provides accurate, real-time answers to complex queries with integrated citations from reliable web sources for transparent and efficient research.",
+    "categories": ["Research"],
+    "imgURL": "https://pbs.twimg.com/profile_images/2009310641165660160/XArF3_Ib_400x400.jpg",
+    "linkURL": "https://www.perplexity.ai/"
+  },
+  {
+    "id": 26,
+    "name": "Mesh3d",
+    "description": "A curated digital gallery showcasing high-quality 3D assets, design inspiration, and innovative spatial compositions for creators.",
+    "categories": ["Design", "3D"],
+    "imgURL": "https://pbs.twimg.com/profile_images/2026653376004395008/vYxtMWze_400x400.jpg",
+    "linkURL": "https://mesh3d.gallery/"
+  },
+  {
+    "id": 27,
+    "name": "Design Spells",
+    "description": "A curated library of delightful micro-interactions and exceptional UI details designed to inspire polished digital experiences.",
+    "categories": ["Design"],
+    "imgURL": "https://pbs.twimg.com/profile_images/1930935185991954432/ZW_QgE6a_400x400.jpg",
+    "linkURL": "https://www.designspells.com/"
+  },
+  {
+    "id": 28,
+    "name": "ChatGPT",
+    "description": "A versatile AI powered by advanced large language models, offering comprehensive capabilities in natural language processing, complex problem solving, multimodal image generation, and expert-level programming assistance.",
+    "categories": ["Image", "Coding", "Chatbot"],
+    "imgURL": "https://pbs.twimg.com/profile_images/1885410181409820672/ztsaR0JW_400x400.jpg",
+    "linkURL": "https://chat.openai.com/"
   }
 ]

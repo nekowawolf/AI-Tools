@@ -353,14 +353,6 @@
   },
   { 
     "id": 45,
-    "name": "",
-    "description": "",
-    "categories": ["Coding","Chatbot"],
-    "imgURL": "https://pbs.twimg.com/profile_images/1955397769138667520/XoWT5Huy_400x400.jpg",
-    "linkURL": "https://v0.app/"
-  },
-  { 
-    "id": 46,
     "name": "Scite",
     "description": "An award-winning platform that helps researchers discover and evaluate scientific articles via Smart Citations. It allows users to see how a publication has been cited by providing the context of the citation and a classification describing whether it provides supporting or contrasting evidence.",
     "categories": ["Research"],
@@ -368,7 +360,7 @@
     "linkURL": "https://scite.ai/"
   },
   { 
-    "id": 47,
+    "id": 46,
     "name": "Elicit",
     "description": "An AI research assistant designed to automate literature reviews and data extraction from academic papers. It helps researchers find relevant studies without perfect keyword matches, summarizes key findings, and extracts specific data points across multiple documents simultaneously.",
     "categories": ["Research"],
@@ -376,7 +368,7 @@
     "linkURL": "https://elicit.com/"
   },
   { 
-    "id": 48,
+    "id": 47,
     "name": "Research Rabbit",
     "description": "An innovative citation-based discovery tool often called the 'Spotify for Papers.' It allows researchers to create dynamic collections of literature and visualizes connections between authors and papers through interactive maps to discover hidden research networks.",
     "categories": ["Research"],
@@ -384,7 +376,7 @@
     "linkURL": "https://researchrabbit.ai/"
   },
   { 
-    "id": 49,
+    "id": 48,
     "name": "SciSpace",
     "description": "An all-in-one AI platform for scientific research that simplifies reading and understanding academic papers. It features an interactive AI Copilot to explain complex text, math, and tables in real-time, alongside a massive repository and integrated literature review tools.",
     "categories": ["Research"],
@@ -392,7 +384,7 @@
     "linkURL": "https://scispace.com/"
   },
   { 
-    "id": 50,
+    "id": 49,
     "name": "Consensus",
     "description": "A specialized search engine that uses AI to extract and distill findings from scientific research. It allows users to ask questions and receive instant answers backed by peer-reviewed studies, providing a 'consensus' meter to show the prevailing scientific opinion on a topic.",
     "categories": ["Research"],
@@ -400,7 +392,7 @@
     "linkURL": "https://consensus.app/"
   },
   { 
-    "id": 51,
+    "id": 50,
     "name": "Suno",
     "description": "An innovative AI music creation platform that generates full-length songs, including realistic vocals, instrumentation, and lyrics, from simple text descriptions. It enables anyone to produce high-quality audio tracks across a wide variety of genres in seconds.",
     "categories": ["Audio"],
@@ -408,7 +400,7 @@
     "linkURL": "https://suno.com/"
   },
   { 
-    "id": 52,
+    "id": 51,
     "name": "Udio",
     "description": "A state-of-the-art AI music generation platform renowned for its high-fidelity audio production and professional-grade vocal realism. It empowers users to compose, extend, and remix tracks from text prompts, offering granular control over musical styles, structure, and emotional nuance.",
     "categories": ["Audio"],
@@ -416,7 +408,7 @@
     "linkURL": "https://udio.com/"
   },
   { 
-    "id": 53,
+    "id": 52,
     "name": "ElevenLabs",
     "description": "The world's most advanced AI audio platform specializing in lifelike speech synthesis and voice cloning. It offers high-fidelity text-to-speech, real-time dubbing, and emotive voice generation in dozens of languages, catering to content creators, developers, and storytellers.",
     "categories": ["Audio"],
@@ -424,7 +416,7 @@
     "linkURL": "https://elevenlabs.io/"
   },
   { 
-    "id": 54,
+    "id": 53,
     "name": "Hume AI",
     "description": "An emotionally intelligent AI platform featuring the Empathic Voice Interface (EVI). It is designed to understand and react to human vocal modulations, including tone, rhythm, and pitch, enabling more natural and empathetic human-AI interactions.",
     "categories": ["Audio"],

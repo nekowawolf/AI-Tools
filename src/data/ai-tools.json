@@ -180,7 +180,7 @@
     "name": "Sloyd AI",
     "description": "A rapid 3D modeling platform that leverages parametric AI to generate clean, optimized, and fully UV-unwrapped 3D assets from a vast library of customizable templates and text prompts.",
     "categories": ["3D"],
-    "imgURL": "https://pbs.twimg.com/profile_images/1554059765164146690/y5DAIRHz_400x400.jpg",
+    "imgURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSltuWwdLROHXxxTO1XHvdoY9JDvTsg1CMg_g&s",
     "linkURL": "https://www.sloyd.ai/"
   },
   {
@@ -422,5 +422,29 @@
     "categories": ["Audio"],
     "imgURL": "https://pbs.twimg.com/profile_images/1970984354802278400/SurUlOof_400x400.jpg",
     "linkURL": "https://hume.ai/"
+  },
+  { 
+    "id": 54,
+    "name": "MeshyAI",
+    "description": "A leading 3D generative AI tool that transforms text prompts and 2D images into high-quality 3D models in minutes. It streamlines the creation of game assets and digital content with features like text-to-3D, image-to-3D, and AI-powered texturing for efficient creative workflows.",
+    "categories": ["3D"],
+    "imgURL": "https://pbs.twimg.com/profile_images/2049801616052912129/b39Jl6cc_400x400.jpg",
+    "linkURL": "https://meshy.ai/"
+  },
+  { 
+    "id": 55,
+    "name": "Tripo",
+    "description": "An all-in-one AI 3D workspace that generates production-ready 3D assets from text, images, or sketches in seconds. It features a seamless workflow including intelligent model segmentation, one-click PBR-ready texturing (4K), and auto-rigging/animation, specifically designed to accelerate pipelines for gaming, AR/VR, and 3D printing.",
+    "categories": ["3D"],
+    "imgURL": "https://pbs.twimg.com/profile_images/1767828642678374400/0moo4B0D_400x400.jpg",
+    "linkURL": "https://www.tripo3d.ai/"
+  },
+  { 
+    "id": 56,
+    "name": "Kaedim",
+    "description": "An AI-powered 2D to 3D conversion tool built for game developers and design teams. It specializes in transforming 2D art into production-ready, low or high-poly 3D models with industry-standard topology, offering direct integrations with tools like Unity, Unreal Engine, Blender, and Autodesk.",
+    "categories": ["3D"],
+    "imgURL": "https://pbs.twimg.com/profile_images/1615291187971104768/7s5gEY5F_400x400.jpg",
+    "linkURL": "https://www.kaedim3d.com/"
   }
 ]

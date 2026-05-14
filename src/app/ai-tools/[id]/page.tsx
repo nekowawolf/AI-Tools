@@ -4,7 +4,8 @@ import { dashboardMetadata } from "@/constants/metadataTemplates";
 import aiToolsData from "@/data/ai-tools.json";
 import Image from "next/image";
 import Link from "next/link";
-import { FaExternalLinkAlt, FaArrowLeft } from "react-icons/fa";
+import { FaExternalLinkAlt } from "react-icons/fa";
+import BackButton from "@/components/BackButton";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -43,13 +44,7 @@ export default async function AIToolDetails({ params }: Props) {
       <Header />
       <main className="flex-grow pt-36 pb-12 min-h-screen body-color text-fill-color px-4 sm:px-8 font-sans">
         <div className="max-w-4xl mx-auto">
-          <Link
-            href="/ai-tools"
-            className="inline-flex items-center gap-2 text-fill-color/70 hover:text-fill-color mb-8 transition-colors"
-          >
-            <FaArrowLeft className="w-4 h-4" />
-            Back to List
-          </Link>
+          <BackButton fallbackUrl="/ai-tools" />
 
           {/* Header Section */}
           <div className="glass-card rounded-3xl p-7 mb-8 border border-white/10 relative overflow-hidden">

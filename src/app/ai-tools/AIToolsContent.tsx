@@ -3,6 +3,7 @@
 import { useState, useMemo, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import Pagination from '@/components/Pagination';
 import aiToolsData from '@/data/ai-tools.json';
 
@@ -30,14 +31,27 @@ function shuffleArray<T>(array: T[]): T[] {
 }
 
 export default function AIToolsContent() {
-    const [searchQuery, setSearchQuery] = useState('');
-    const [activeCategory, setActiveCategory] = useState('All');
-    const [currentPage, setCurrentPage] = useState(1);
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    const pathname = usePathname();
+
+    const searchQuery = searchParams.get('q') || '';
+    const activeCategory = searchParams.get('category') || 'All';
+    const currentPage = Number(searchParams.get('page')) || 1;
     const [shuffledData, setShuffledData] = useState<typeof aiToolsData>([]);
 
     useEffect(() => {
         setShuffledData(shuffleArray(aiToolsData));
     }, []);
+
+    const updateURL = (newCategory: string, newQuery: string, newPage: number) => {
+        const params = new URLSearchParams();
+        if (newCategory !== 'All') params.set('category', newCategory);
+        if (newQuery) params.set('q', newQuery);
+        if (newPage > 1) params.set('page', newPage.toString());
+        
+        router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+    };
 
     const filteredTools = useMemo(() => {
         const source = shuffledData.length > 0 ? shuffledData : aiToolsData;
@@ -58,13 +72,16 @@ export default function AIToolsContent() {
     );
 
     const handleCategoryChange = (category: string) => {
-        setActiveCategory(category);
-        setCurrentPage(1);
+        updateURL(category, searchQuery, 1);
     };
 
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchQuery(e.target.value);
-        setCurrentPage(1);
+        const q = e.target.value;
+        updateURL(activeCategory, q, 1);
+    };
+
+    const handlePageChange = (page: number) => {
+        updateURL(activeCategory, searchQuery, page);
     };
 
     return (
@@ -166,7 +183,7 @@ export default function AIToolsContent() {
                         currentPage={currentPage}
                         itemsPerPage={ITEMS_PER_PAGE}
                         totalItems={totalItems}
-                        onPageChange={setCurrentPage}
+                        onPageChange={handlePageChange}
                     />
                 )}
             </div>

@@ -235,7 +235,7 @@
     "id": 30,
     "name": "Claude",
     "description": "A next-generation AI assistant by Anthropic known for its advanced reasoning and coding capabilities. It features a large context window and the Artifacts UI, enabling developers to write, debug, and preview code in real-time with high accuracy.",
-    "categories": ["Coding"],
+    "categories": ["Coding","Design"],
     "imgURL": "https://pbs.twimg.com/profile_images/1950950107937185792/QOfEjFoJ_400x400.jpg",
     "linkURL": "https://claude.ai/"
   },
@@ -446,5 +446,61 @@
     "categories": ["3D"],
     "imgURL": "https://pbs.twimg.com/profile_images/1615291187971104768/7s5gEY5F_400x400.jpg",
     "linkURL": "https://www.kaedim3d.com/"
+  },
+  { 
+    "id": 57,
+    "name": "Emergent",
+    "description": "An AI platform to build production-ready full-stack web and mobile apps through conversation. It allows users to chat with AI agents that design, code, and deploy applications from start to finish.",
+    "categories": ["Coding"],
+    "imgURL": "https://pbs.twimg.com/profile_images/1913617233001295872/hYKnojsI_400x400.jpg",
+    "linkURL": "https://app.emergent.sh/"
+  },
+  { 
+    "id": 58,
+    "name": "21st Dev",
+    "description": "An AI agent registry and developer platform featuring UI components, agent templates, and an SDK for building AI agents with built-in UI, chat history, and sandboxed execution.",
+    "categories": ["Design", "Prompt"],
+    "imgURL": "https://21st.dev/apple-touch-icon.png",
+    "linkURL": "https://21st.dev/"
+  },
+  { 
+    "id": 59,
+    "name": "Runway",
+    "description": "An applied AI research company building foundational 'General World Models' to simulate the visual world. Its platform offers industry-leading tools for generative video (Gen-3 Alpha, Gen-4), allowing users to generate and edit cinematic content with advanced motion control and physical simulation.",
+    "categories": ["Video"],
+    "imgURL": "https://pbs.twimg.com/profile_images/1999115192232292353/zOq5-uwB_400x400.jpg",
+    "linkURL": "https://runwayml.com/"
+  },
+  { 
+    "id": 60,
+    "name": "Stitch",
+    "description": "An AI-native software design canvas by Google Labs that enables 'vibe designing'—turning natural language prompts, sketches, or images into high-fidelity UI designs and interactive prototypes. It features a design agent for real-time critiques and exports production-ready code.",
+    "categories": ["Design"],
+    "imgURL": "https://pbs.twimg.com/profile_images/2037662082771116032/ZQ1T1io3_400x400.png",
+    "linkURL": "https://stitch.withgoogle.com/"
+  },
+  { 
+    "id": 61,
+    "name": "Midjourney",
+    "description": "An independent, community-funded research lab exploring new mediums of thought. It is widely recognized for building state-of-the-art AI image models that prioritize beauty and creative imagination, aiming to amplify the human spirit through its advanced generative tools.",
+    "categories": ["Image"],
+    "imgURL": "https://upload.wikimedia.org/wikipedia/commons/2/24/Midjourney_Emblem.svg",
+    "linkURL": "https://midjourney.com/"
+  },
+  { 
+    "id": 62,
+    "name": "Replit",
+    "description": "An AI-powered software development platform that allows users to build, test, and deploy applications directly from the browser. It features the 'Replit Agent' to turn ideas into production-ready code through conversation, providing a complete workspace with built-in hosting and database services.",
+    "categories": ["Coding"],
+    "imgURL": "https://pbs.twimg.com/profile_images/2031733558952464384/ERrHv3jK_400x400.jpg",
+    "linkURL": "https://replit.com/"
+  },
+  { 
+    "id": 63,
+    "name": "Poe",
+    "description": "A comprehensive AI platform by Quora that provides fast and easy access to a wide variety of state-of-the-art models, including GPT-4, Claude, Gemini, and thousands of community-created bots. It enables users to chat, create their own bots, and interact with different AI capabilities all in one interface.",
+    "categories": ["Chatbot", "Coding", "Image", "Video"],
+    "imgURL": "https://pbs.twimg.com/profile_images/1779895040577585153/Zdq0M-gM_400x400.jpg",
+    "linkURL": "https://poe.com/"
   }
 ]

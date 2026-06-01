@@ -2,7 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { dashboardMetadata } from "@/constants/metadataTemplates";
 import aiToolsData from "@/data/ai-tools.json";
-import Image from "next/image";
+import { FallbackImage } from "@/components/FallbackImage";
 import Link from "next/link";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import BackButton from "@/components/BackButton";
@@ -49,7 +49,7 @@ export default async function AIToolDetails({ params }: Props) {
           {/* Header Section */}
           <div className="glass-card rounded-3xl p-7 mb-8 border border-white/10 relative overflow-hidden">
             <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
-              <Image
+              <FallbackImage
                 src={tool.imgURL}
                 alt=""
                 width={256}
@@ -60,7 +60,7 @@ export default async function AIToolDetails({ params }: Props) {
             </div>
 
             <div className="relative z-10 flex flex-col md:flex-row gap-6 items-start">
-              <Image
+              <FallbackImage
                 src={tool.imgURL}
                 alt={tool.name}
                 width={112}

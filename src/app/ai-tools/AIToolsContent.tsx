@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo, useEffect } from 'react';
-import Image from 'next/image';
+import { FallbackImage } from '@/components/FallbackImage';
 import Link from 'next/link';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import Pagination from '@/components/Pagination';
@@ -139,7 +139,7 @@ export default function AIToolsContent() {
                                 className="glass-card rounded-2xl p-5 flex flex-col items-center text-center h-full card-hover block"
                             >
                                 <div className="mb-4 w-full aspect-square max-w-[80px] relative rounded-xl overflow-hidden bg-card-color mx-auto group-hover:scale-105 transition-transform">
-                                    <Image
+                                    <FallbackImage
                                         src={tool.imgURL}
                                         alt={tool.name}
                                         fill
@@ -163,7 +163,7 @@ export default function AIToolsContent() {
                     ) : (
                         <div className="col-span-full w-full flex-col flex gap-4">
                             <div className="text-center py-10">
-                                <Image
+                                <FallbackImage
                                     src="https://nekowawolf.github.io/cdn-images/images/2026/1771661079_pixchan.png"
                                     alt="No data found"
                                     width={176}

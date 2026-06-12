@@ -36,6 +36,7 @@ export default function AIToolsContent() {
     const pathname = usePathname();
 
     const searchQuery = searchParams.get('q') || '';
+    const [localSearchQuery, setLocalSearchQuery] = useState(searchQuery);
     const activeCategory = searchParams.get('category') || 'All';
     const currentPage = Number(searchParams.get('page')) || 1;
     const [shuffledData, setShuffledData] = useState<typeof aiToolsData>([]);
@@ -43,6 +44,21 @@ export default function AIToolsContent() {
     useEffect(() => {
         setShuffledData(shuffleArray(aiToolsData));
     }, []);
+
+    // Debounce search URL update
+    useEffect(() => {
+        const handler = setTimeout(() => {
+            const currentQ = searchParams.get('q') || '';
+            if (localSearchQuery !== currentQ) {
+                const params = new URLSearchParams(searchParams.toString());
+                if (localSearchQuery) params.set('q', localSearchQuery);
+                else params.delete('q');
+                params.set('page', '1'); // reset page on search
+                router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+            }
+        }, 300);
+        return () => clearTimeout(handler);
+    }, [localSearchQuery, pathname, router, searchParams]);
 
     const updateURL = (newCategory: string, newQuery: string, newPage: number) => {
         const params = new URLSearchParams();
@@ -57,11 +73,11 @@ export default function AIToolsContent() {
         const source = shuffledData.length > 0 ? shuffledData : aiToolsData;
         
         return source.filter(tool => {
-            const matchesSearch = tool.name.toLowerCase().includes(searchQuery.toLowerCase());
+            const matchesSearch = tool.name.toLowerCase().includes(localSearchQuery.toLowerCase());
             const matchesCategory = activeCategory === 'All' || (tool.categories && tool.categories.includes(activeCategory));
             return matchesSearch && matchesCategory;
         });
-    }, [searchQuery, activeCategory, shuffledData]);
+    }, [localSearchQuery, activeCategory, shuffledData]);
 
     const totalItems = filteredTools.length;
     const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
@@ -72,16 +88,15 @@ export default function AIToolsContent() {
     );
 
     const handleCategoryChange = (category: string) => {
-        updateURL(category, searchQuery, 1);
+        updateURL(category, localSearchQuery, 1);
     };
 
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const q = e.target.value;
-        updateURL(activeCategory, q, 1);
+        setLocalSearchQuery(e.target.value);
     };
 
     const handlePageChange = (page: number) => {
-        updateURL(activeCategory, searchQuery, page);
+        updateURL(activeCategory, localSearchQuery, page);
     };
 
     return (
@@ -106,7 +121,7 @@ export default function AIToolsContent() {
                     <input
                         type="text"
                         placeholder="Search AI"
-                        value={searchQuery}
+                        value={localSearchQuery}
                         onChange={handleSearchChange}
                         className="w-full py-3 pl-12 pr-6 rounded-full card-color border border-color focus:outline-none focus:border-blue-500 text-fill-color placeholder:text-fill-color/50 transition-colors"
                     />

@@ -1,11 +1,10 @@
 'use client';
 
-import { useState, useMemo, useEffect } from 'react';
 import { FallbackImage } from '@/components/FallbackImage';
 import Link from 'next/link';
-import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import Pagination from '@/components/Pagination';
-import aiToolsData from '@/data/ai-tools.json';
+import { useAITools } from '@/hooks/useAITools';
+import { Spinner } from '@/components/ui/spinner';
 
 const ITEMS_PER_PAGE = 8;
 
@@ -21,83 +20,34 @@ const categories = [
     "Research",
 ];
 
-function shuffleArray<T>(array: T[]): T[] {
-    const shuffled = [...array];
-    for (let i = shuffled.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    return shuffled;
-}
+import { Suspense } from 'react';
 
 export default function AIToolsContent() {
-    const router = useRouter();
-    const searchParams = useSearchParams();
-    const pathname = usePathname();
-
-    const searchQuery = searchParams.get('q') || '';
-    const [localSearchQuery, setLocalSearchQuery] = useState(searchQuery);
-    const activeCategory = searchParams.get('category') || 'All';
-    const currentPage = Number(searchParams.get('page')) || 1;
-    const [shuffledData, setShuffledData] = useState<typeof aiToolsData>([]);
-
-    useEffect(() => {
-        setShuffledData(shuffleArray(aiToolsData));
-    }, []);
-
-    // Debounce search URL update
-    useEffect(() => {
-        const handler = setTimeout(() => {
-            const currentQ = searchParams.get('q') || '';
-            if (localSearchQuery !== currentQ) {
-                const params = new URLSearchParams(searchParams.toString());
-                if (localSearchQuery) params.set('q', localSearchQuery);
-                else params.delete('q');
-                params.set('page', '1'); // reset page on search
-                router.replace(`${pathname}?${params.toString()}`, { scroll: false });
-            }
-        }, 300);
-        return () => clearTimeout(handler);
-    }, [localSearchQuery, pathname, router, searchParams]);
-
-    const updateURL = (newCategory: string, newQuery: string, newPage: number) => {
-        const params = new URLSearchParams();
-        if (newCategory !== 'All') params.set('category', newCategory);
-        if (newQuery) params.set('q', newQuery);
-        if (newPage > 1) params.set('page', newPage.toString());
-        
-        router.replace(`${pathname}?${params.toString()}`, { scroll: false });
-    };
-
-    const filteredTools = useMemo(() => {
-        const source = shuffledData.length > 0 ? shuffledData : aiToolsData;
-        
-        return source.filter(tool => {
-            const matchesSearch = tool.name.toLowerCase().includes(localSearchQuery.toLowerCase());
-            const matchesCategory = activeCategory === 'All' || (tool.categories && tool.categories.includes(activeCategory));
-            return matchesSearch && matchesCategory;
-        });
-    }, [localSearchQuery, activeCategory, shuffledData]);
-
-    const totalItems = filteredTools.length;
-    const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
-
-    const displayedTools = filteredTools.slice(
-        (currentPage - 1) * ITEMS_PER_PAGE,
-        currentPage * ITEMS_PER_PAGE
+    return (
+        <Suspense fallback={
+            <div className="flex justify-center items-center min-h-[50vh]">
+                <Spinner className="text-blue-500 size-10" />
+            </div>
+        }>
+            <AIToolsContentInner />
+        </Suspense>
     );
+}
 
-    const handleCategoryChange = (category: string) => {
-        updateURL(category, localSearchQuery, 1);
-    };
-
-    const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setLocalSearchQuery(e.target.value);
-    };
-
-    const handlePageChange = (page: number) => {
-        updateURL(activeCategory, localSearchQuery, page);
-    };
+function AIToolsContentInner() {
+    const {
+        displayedTools,
+        loading,
+        error,
+        localSearchQuery,
+        handleSearchChange,
+        activeCategory,
+        handleCategoryChange,
+        currentPage,
+        handlePageChange,
+        totalPages,
+        totalItems
+    } = useAITools(ITEMS_PER_PAGE);
 
     return (
         <div className="min-h-screen body-color text-fill-color p-8 pt-12 font-sans">
@@ -144,62 +94,76 @@ export default function AIToolsContent() {
                     ))}
                 </div>
 
-                {/* Tools Grid */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-5xl">
-                    {displayedTools.length > 0 ? (
-                        displayedTools.map((tool) => (
-                            <Link
-                                href={`/ai-tools/${tool.id}`}
-                                key={tool.id}
-                                className="glass-card rounded-2xl p-5 flex flex-col items-center text-center h-full card-hover block"
-                            >
-                                <div className="mb-4 w-full aspect-square max-w-[80px] relative rounded-xl overflow-hidden bg-card-color mx-auto group-hover:scale-105 transition-transform">
-                                    <FallbackImage
-                                        src={tool.imgURL}
-                                        alt={tool.name}
-                                        fill
-                                        className="object-cover"
-                                        unoptimized
-                                    />
-                                </div>
-
-                                <h3 className="text-lg font-bold text-fill-color mb-2">
-                                    {tool.name}
-                                </h3>
-                                <div className="flex flex-wrap gap-1.5 justify-center">
-                                    {tool.categories.map((cat, index) => (
-                                        <span key={index} className="text-[10px] px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
-                                            {cat}
-                                        </span>
-                                    ))}
-                                </div>
-                            </Link>
-                        ))
-                    ) : (
-                        <div className="col-span-full w-full flex-col flex gap-4">
-                            <div className="text-center py-10">
-                                <FallbackImage
-                                    src="https://nekowawolf.github.io/cdn-images/images/2026/1771661079_pixchan.png"
-                                    alt="No data found"
-                                    width={176}
-                                    height={176}
-                                    className="mx-auto"
-                                />
-                                <p className="text-fill-color/50 mt-4">No data available.</p>
+                {loading ? (
+                    <div className="flex justify-center p-12 w-full max-w-7xl">
+                        <Spinner className="text-blue-500 size-10" />
+                    </div>
+                ) : (
+                    <div className="flex flex-col gap-4 w-full items-center">
+                        {error && (
+                            <div className="text-red-500 text-center py-4 bg-red-500/10 rounded-lg border border-red-500/20 w-full max-w-7xl mb-4">
+                                Error loading AI tools: {error}
                             </div>
+                        )}
+
+                        {/* Tools Grid */}
+                        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-5xl">
+                            {displayedTools.length > 0 ? (
+                                displayedTools.map((tool) => (
+                                    <Link
+                                        href={`/ai-tools/${tool._id}`}
+                                        key={tool._id}
+                                        className="glass-card rounded-2xl p-5 flex flex-col items-center text-center h-full card-hover block"
+                                    >
+                                        <div className="mb-4 w-full aspect-square max-w-[80px] relative rounded-xl overflow-hidden bg-card-color mx-auto group-hover:scale-105 transition-transform">
+                                            <FallbackImage
+                                                src={tool.imgURL}
+                                                alt={tool.name}
+                                                fill
+                                                className="object-cover"
+                                                unoptimized
+                                            />
+                                        </div>
+
+                                        <h3 className="text-lg font-bold text-fill-color mb-2">
+                                            {tool.name}
+                                        </h3>
+                                        <div className="flex flex-wrap gap-1.5 justify-center">
+                                            {tool.categories.map((cat, index) => (
+                                                <span key={index} className="text-[10px] px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                                                    {cat}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </Link>
+                                ))
+                            ) : (
+                                <div className="col-span-full w-full flex-col flex gap-4">
+                                    <div className="text-center py-10">
+                                        <FallbackImage
+                                            src="https://nekowawolf.github.io/cdn-images/images/2026/1771661079_pixchan.png"
+                                            alt="No data found"
+                                            width={176}
+                                            height={176}
+                                            className="mx-auto"
+                                        />
+                                        <p className="text-fill-color/50 mt-4">No data available.</p>
+                                    </div>
+                                </div>
+                            )}
+
                         </div>
-                    )}
 
-                </div>
-
-                {/* Pagination */}
-                {totalPages > 1 && (
-                    <Pagination
-                        currentPage={currentPage}
-                        itemsPerPage={ITEMS_PER_PAGE}
-                        totalItems={totalItems}
-                        onPageChange={handlePageChange}
-                    />
+                        {/* Pagination */}
+                        {displayedTools.length > 0 && totalPages > 1 && (
+                            <Pagination
+                                currentPage={currentPage}
+                                itemsPerPage={ITEMS_PER_PAGE}
+                                totalItems={totalItems}
+                                onPageChange={handlePageChange}
+                            />
+                        )}
+                    </div>
                 )}
             </div>
         </div>

@@ -1,10 +1,12 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { dashboardMetadata } from "@/constants/metadataTemplates";
-import aiToolsData from "@/data/ai-tools.json";
+import { fetchAIToolsData } from "@/services/aiToolService";
 import { FallbackImage } from "@/components/FallbackImage";
 import Link from "next/link";
 import { FaExternalLinkAlt } from "react-icons/fa";
+import { FaXTwitter, FaTelegram } from "react-icons/fa6";
+import { BsDiscord } from "react-icons/bs";
 import BackButton from "@/components/BackButton";
 
 type Props = {
@@ -13,14 +15,16 @@ type Props = {
 
 export async function generateMetadata({ params }: Props) {
   const resolvedParams = await params;
-  const tool = aiToolsData.find((t) => t.id.toString() === resolvedParams.id);
+  const aiToolsData = await fetchAIToolsData();
+  const tool = aiToolsData.find((t) => t._id.toString() === resolvedParams.id);
   if (!tool) return dashboardMetadata("Not Found", "Tool not found");
   return dashboardMetadata(tool.name, tool.description);
 }
 
 export default async function AIToolDetails({ params }: Props) {
   const resolvedParams = await params;
-  const tool = aiToolsData.find((t) => t.id.toString() === resolvedParams.id);
+  const aiToolsData = await fetchAIToolsData();
+  const tool = aiToolsData.find((t) => t._id.toString() === resolvedParams.id);
 
   if (!tool) {
     return (
@@ -84,15 +88,35 @@ export default async function AIToolDetails({ params }: Props) {
                   {tool.description}
                 </p>
                 {/* Button */}
-                <a
-                  href={tool.linkURL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg font-medium text-sm text-white bg-blue-600 hover:bg-blue-500 transition-all shadow-md shadow-blue-500/20 mt-4"
-                >
-                  Visit Website
-                  <FaExternalLinkAlt className="w-3 h-3" />
-                </a>
+                <div className="flex flex-wrap items-center gap-4 mt-6">
+                  {tool.website && (
+                    <a
+                      href={tool.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg font-medium text-sm text-white bg-blue-600 hover:bg-blue-500 transition-all shadow-md shadow-blue-500/20"
+                    >
+                      Visit Website
+                      <FaExternalLinkAlt className="w-3 h-3" />
+                    </a>
+                  )}
+
+                  {tool.twitter && (
+                    <a href={tool.twitter} target="_blank" rel="noopener noreferrer" className="opacity-70 hover:opacity-100 transition-opacity text-fill-color">
+                      <FaXTwitter className="w-5 h-5" />
+                    </a>
+                  )}
+                  {tool.discord && (
+                    <a href={tool.discord} target="_blank" rel="noopener noreferrer" className="opacity-70 hover:opacity-100 transition-opacity text-fill-color">
+                      <BsDiscord className="w-5 h-5" />
+                    </a>
+                  )}
+                  {tool.telegram && (
+                    <a href={tool.telegram} target="_blank" rel="noopener noreferrer" className="opacity-70 hover:opacity-100 transition-opacity text-fill-color">
+                      <FaTelegram className="w-5 h-5" />
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
           </div>

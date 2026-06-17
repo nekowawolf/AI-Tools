@@ -32,3 +32,13 @@ export const fetchAIToolsData = async (): Promise<AITool[]> => {
         throw error;
     }
 };
+
+export const fetchAIToolById = async (id: string): Promise<AITool | null> => {
+    try {
+        const tools = await fetchAIToolsData();
+        return tools.find((t) => t._id.toString() === id) || null;
+    } catch (error) {
+        console.error('Error fetching AI tool by ID:', error);
+        return null;
+    }
+};

@@ -115,46 +115,48 @@ export default function Footer() {
             </div>
 
             <div className="max-w-7xl mx-auto px-4">
+            {/* Links and Copyright */}
+            <div className="mt-4 flex flex-col md:flex-row justify-between items-center text-sm text-fill-color/60 border-t border-white/5 pt-8">
+
+                {/* Copyright */}
+                <p className="order-2 md:order-1 mt-6 md:mt-0 text-center md:text-left">
+                    &copy; Nww AI Tools, 2026.
+                </p>
+
                 {/* Links */}
-                <div className="mt-4 flex flex-col md:flex-row justify-between items-center text-sm text-fill-color/60 border-t border-white/5 pt-8">
-
-                    <p className="order-2 md:order-1 mt-8 md:mt-0 text-center md:text-left">
-                        &copy; Nww AI Tools, 2026.
-                    </p>
-
-                    <div className="order-1 md:order-2 flex space-x-6 mt-4 md:mt-0">
-                        <a
-                            href="https://airdrop.nekowawolf.xyz"
-                            target="_blank"
-                            className="text-fill-color/60 hover:!text-blue-600 transition-colors duration-300"
-                        >
-                            Airdrops
-                        </a>
-                        <a
-                            href="https://cc.nekowawolf.xyz/"
-                            target="_blank"
-                            className="text-fill-color/60 hover:!text-blue-600 transition-colors duration-300"
-                        >
-                            Community
-                        </a>
-                        <a
-                            href="https://web3.nekowawolf.xyz/"
-                            target="_blank"
-                            className="text-fill-color/60 hover:!text-blue-600 transition-colors duration-300"
-                        >
-                            Web3 Tools
-                        </a>
-                        <a
-                            href="https://github.nekowawolf.xyz/"
-                            target="_blank"
-                            className="text-fill-color/60 hover:!text-blue-600 transition-colors duration-300"
-                        >
-                            GitHub Repos
-                        </a>
-                    </div>
-
+                <div className="order-1 md:order-2 flex flex-wrap justify-center gap-x-6 gap-y-3 md:space-x-6 md:gap-y-0 mt-0">
+                    <a
+                        href="https://airdrop.nekowawolf.xyz"
+                        target="_blank"
+                        className="text-fill-color/60 hover:!text-blue-600 transition-colors duration-300"
+                    >
+                        Airdrops
+                    </a>
+                    <a
+                        href="https://cc.nekowawolf.xyz/"
+                        target="_blank"
+                        className="text-fill-color/60 hover:!text-blue-600 transition-colors duration-300"
+                    >
+                        Community
+                    </a>
+                    <a
+                        href="https://web3.nekowawolf.xyz/"
+                        target="_blank"
+                        className="text-fill-color/60 hover:!text-blue-600 transition-colors duration-300"
+                    >
+                        Web3 Tools
+                    </a>
+                    <a
+                        href="https://github.nekowawolf.xyz/"
+                        target="_blank"
+                        className="text-fill-color/60 hover:!text-blue-600 transition-colors duration-300 w-full text-center md:w-auto md:text-left"
+                    >
+                        GitHub Repos
+                    </a>
                 </div>
+
             </div>
+        </div>
         </footer>
     );
 }

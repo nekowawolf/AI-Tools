@@ -7,7 +7,7 @@ import { fetchAIToolById } from "@/services/aiToolService";
 import { AITool } from "@/types/aitool";
 import { Spinner } from "@/components/ui/spinner";
 import { FallbackImage } from "@/components/FallbackImage";
-import { FaExternalLinkAlt } from "react-icons/fa";
+import { FaExternalLinkAlt, FaPlayCircle } from "react-icons/fa";
 import { FaXTwitter, FaTelegram } from "react-icons/fa6";
 import { BsDiscord } from "react-icons/bs";
 import BackButton from "@/components/BackButton";
@@ -19,6 +19,16 @@ export default function DetailClient() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Load Twitter widget script if not already loaded
+    if (!(window as any).twttr) {
+      const script = document.createElement('script');
+      script.src = 'https://platform.twitter.com/widgets.js';
+      script.async = true;
+      document.body.appendChild(script);
+    } else if ((window as any).twttr.widgets) {
+      (window as any).twttr.widgets.load();
+    }
+
     if (!id) return;
     const fetchDetail = async () => {
       setLoading(true);
@@ -130,6 +140,62 @@ export default function DetailClient() {
             </div>
           </div>
         </div>
+
+        {/* Video Section */}
+        {tool.video_url && (
+          <div className="glass-card rounded-3xl p-7 mb-8 border border-white/10 relative overflow-hidden">
+            <div className="flex items-center gap-2 mb-6">
+              <div className="p-2 rounded-lg bg-blue-500/20 text-blue-500">
+                <FaPlayCircle className="w-5 h-5" />
+              </div>
+              <h2 className="text-xl font-bold">Video Overview</h2>
+            </div>
+            
+            <div className="w-full flex justify-center">
+              {(() => {
+                const url = tool.video_url;
+                if (url.includes('youtube.com') || url.includes('youtu.be')) {
+                  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+                  const match = url.match(regExp);
+                  const videoId = (match && match[2].length === 11) ? match[2] : null;
+                  
+                  if (videoId) {
+                    return (
+                      <div className="w-full max-w-4xl aspect-video rounded-2xl overflow-hidden bg-black/40 border border-white/5 shadow-2xl shadow-black/50 relative z-10">
+                        <iframe 
+                          width="100%" 
+                          height="100%" 
+                          src={`https://www.youtube.com/embed/${videoId}`} 
+                          title="YouTube video player" 
+                          frameBorder="0" 
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                          allowFullScreen
+                        ></iframe>
+                      </div>
+                    );
+                  }
+                } else if (url.includes('twitter.com') || url.includes('x.com')) {
+                  const tweetUrl = url.replace('x.com', 'twitter.com');
+                  return (
+                    <div className="w-full max-w-xl flex justify-center relative z-10">
+                      <blockquote className="twitter-tweet" data-theme="dark" data-align="center">
+                        <a href={tweetUrl}></a>
+                      </blockquote>
+                    </div>
+                  );
+                }
+                
+                return (
+                  <a href={url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-medium text-white bg-blue-600 hover:bg-blue-500 transition-all shadow-lg shadow-blue-500/20 relative z-10">
+                    <FaPlayCircle className="w-4 h-4" />
+                    Watch Video
+                  </a>
+                );
+              })()}
+            </div>
+          </div>
+        )}
+
       </div>
     </main>
   );

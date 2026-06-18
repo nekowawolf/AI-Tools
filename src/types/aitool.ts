@@ -4,6 +4,7 @@ export interface AITool {
     description: string;
     categories: string[];
     imgURL: string;
+    video_url?: string;
     website?: string;
     twitter?: string;
     discord?: string;

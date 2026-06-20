@@ -7,6 +7,7 @@ export interface AITool {
     video_url?: string;
     website?: string;
     twitter?: string;
+    instagram?: string;
     discord?: string;
     telegram?: string;
 }

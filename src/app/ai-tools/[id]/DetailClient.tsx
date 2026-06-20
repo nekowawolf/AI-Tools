@@ -8,7 +8,7 @@ import { AITool } from "@/types/aitool";
 import { Spinner } from "@/components/ui/spinner";
 import { FallbackImage } from "@/components/FallbackImage";
 import { FaExternalLinkAlt, FaPlayCircle } from "react-icons/fa";
-import { FaXTwitter, FaTelegram } from "react-icons/fa6";
+import { FaXTwitter, FaTelegram, FaInstagram } from "react-icons/fa6";
 import { BsDiscord } from "react-icons/bs";
 import BackButton from "@/components/BackButton";
 
@@ -124,6 +124,11 @@ export default function DetailClient() {
                 {tool.twitter && (
                   <a href={tool.twitter} target="_blank" rel="noopener noreferrer" className="opacity-70 hover:opacity-100 transition-opacity text-fill-color">
                     <FaXTwitter className="w-5 h-5" />
+                  </a>
+                )}
+                {tool.instagram && (
+                  <a href={tool.instagram} target="_blank" rel="noopener noreferrer" className="opacity-70 hover:opacity-100 transition-opacity text-fill-color">
+                    <FaInstagram className="w-5 h-5" />
                   </a>
                 )}
                 {tool.discord && (

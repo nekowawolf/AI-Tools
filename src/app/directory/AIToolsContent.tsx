@@ -111,7 +111,7 @@ function AIToolsContentInner() {
                             {displayedTools.length > 0 ? (
                                 displayedTools.map((tool) => (
                                     <Link
-                                        href={`/ai-tools/${tool._id}`}
+                                        href={`/directory/${tool._id}`}
                                         key={tool._id}
                                         className="glass-card rounded-2xl p-5 flex flex-col items-center text-center h-full card-hover block"
                                     >

@@ -4,9 +4,9 @@ import { useEffect, useRef } from 'react';
 
 const textArray = [
   'page not found',
-  'but, are you airdrop farmers?',
-  'if yes, click the wolf!',
-  'if no, ctrl+w'
+  'nothing to see on this page',
+  'wanna see what i’ve actually built?',
+  'just click the wolf'
 ];
 
 export default function NotFound() {
@@ -61,7 +61,7 @@ export default function NotFound() {
           />
         </div>
 
-        <a href="https://airdrop.nekowawolf.xyz" className="inline-block mb-4">
+        <a href="https://nekowawolf.xyz" className="inline-block mb-4">
           <img
             src="https://www.nekowawolf.xyz/img/nww.png"
             alt=""
@@ -74,7 +74,7 @@ export default function NotFound() {
           alt=""
           width={208}
           height={208}
-          className="sm:w-48 bg-center sm:ml-10 ml-7 mt-7 h-auto mx-auto fixed -bottom-24 sm:-bottom-24"
+          className="sm:w-48 bg-center h-auto fixed -bottom-24 sm:-bottom-24 left-1/2 -translate-x-1/2"
         />
       </div>
 

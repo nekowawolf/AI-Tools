@@ -98,7 +98,7 @@ export default function DetailClient() {
               </h1>
               <div className="flex flex-wrap gap-3 mb-4">
                 {tool.categories.map((cat: string, index: number) => (
-                  <span key={index} className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 text-sm border border-blue-500/20">
+                  <span key={index} className="px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-sm border border-blue-500/20">
                     {cat}
                   </span>
                 ))}

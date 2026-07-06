@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { fetchAIToolById } from "@/services/aiToolService";
@@ -11,6 +11,69 @@ import { FaExternalLinkAlt, FaPlayCircle } from "react-icons/fa";
 import { FaXTwitter, FaTelegram, FaInstagram } from "react-icons/fa6";
 import { BsDiscord } from "react-icons/bs";
 import BackButton from "@/components/BackButton";
+
+const TweetEmbed = ({ url }: { url: string }) => {
+  const [loaded, setLoaded] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let isMounted = true;
+    
+    const renderTweet = () => {
+      const tweetId = url.match(/\/status\/(\d+)/)?.[1];
+      if (!tweetId) {
+        if (isMounted) setLoaded(true);
+        return;
+      }
+
+      const checkTwttr = setInterval(() => {
+        if ((window as any).twttr && (window as any).twttr.widgets) {
+          clearInterval(checkTwttr);
+          
+          if (containerRef.current) {
+            containerRef.current.innerHTML = '';
+            (window as any).twttr.widgets.createTweet(
+              tweetId,
+              containerRef.current,
+              { theme: 'dark', align: 'center' }
+            ).then(() => {
+              if (isMounted) setLoaded(true);
+            });
+          }
+        }
+      }, 100);
+    };
+
+    renderTweet();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [url]);
+
+  return (
+    <div className="w-full max-w-xl relative z-10 flex flex-col items-center min-h-[400px]">
+      {!loaded && (
+        <div className="absolute top-0 w-full p-6 rounded-2xl border border-white/10 bg-white/5 animate-pulse flex flex-col gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-full bg-white/10"></div>
+            <div className="flex flex-col gap-2">
+              <div className="w-32 h-4 rounded bg-white/10"></div>
+              <div className="w-20 h-3 rounded bg-white/10"></div>
+            </div>
+          </div>
+          <div className="w-full h-4 rounded bg-white/10 mt-2"></div>
+          <div className="w-5/6 h-4 rounded bg-white/10"></div>
+          <div className="w-full h-48 rounded-xl bg-white/10 mt-2"></div>
+        </div>
+      )}
+      <div 
+        ref={containerRef} 
+        className={`w-full flex justify-center transition-opacity duration-300 ${loaded ? 'opacity-100' : 'opacity-0'}`} 
+      />
+    </div>
+  );
+};
 
 export default function DetailClient() {
   const { id } = useParams();
@@ -181,13 +244,7 @@ export default function DetailClient() {
                   }
                 } else if (url.includes('twitter.com') || url.includes('x.com')) {
                   const tweetUrl = url.replace('x.com', 'twitter.com');
-                  return (
-                    <div className="w-full max-w-xl flex justify-center relative z-10">
-                      <blockquote className="twitter-tweet" data-theme="dark" data-align="center">
-                        <a href={tweetUrl}></a>
-                      </blockquote>
-                    </div>
-                  );
+                  return <TweetEmbed url={tweetUrl} />;
                 }
                 
                 return (

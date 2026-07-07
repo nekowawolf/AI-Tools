@@ -3,6 +3,8 @@ import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { AITool } from '@/types/aitool';
 import { fetchAIToolsData } from '@/services/aiToolService';
 
+let isInitialLoad = true;
+
 export const useAITools = (itemsPerPage: number = 8) => {
     const searchParams = useSearchParams();
     const router = useRouter();
@@ -13,14 +15,25 @@ export const useAITools = (itemsPerPage: number = 8) => {
     const [error, setError] = useState<string | null>(null);
     
     const [localSearchQuery, setLocalSearchQuery] = useState(searchParams.get('q') || '');
-    const activeCategory = searchParams.get('category') || 'All';
-    const currentPage = Number(searchParams.get('page')) || 1;
+    const [localCategory, setLocalCategory] = useState(searchParams.get('category') || 'All');
+    const [localPage, setLocalPage] = useState(Number(searchParams.get('page')) || 1);
 
     useEffect(() => {
         const loadData = async () => {
             try {
                 setLoading(true);
-                const data = await fetchAIToolsData();
+                
+                let forceShuffle = false;
+                if (isInitialLoad) {
+                    isInitialLoad = false;
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const page = Number(urlParams.get('page')) || 1;
+                    if (page === 1) {
+                        forceShuffle = true;
+                    }
+                }
+                
+                const data = await fetchAIToolsData(forceShuffle);
                 setToolsData(data);
             } catch (err) {
                 setError('Failed to fetch AI tools data');
@@ -37,15 +50,18 @@ export const useAITools = (itemsPerPage: number = 8) => {
         const handler = setTimeout(() => {
             const currentQ = searchParams.get('q') || '';
             if (localSearchQuery !== currentQ) {
-                const params = new URLSearchParams(searchParams.toString());
+                const params = new URLSearchParams(window.location.search);
                 if (localSearchQuery) params.set('q', localSearchQuery);
                 else params.delete('q');
                 params.set('page', '1');
-                router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+                
+                const queryString = params.toString();
+                const newUrl = queryString ? `${pathname}?${queryString}` : pathname;
+                window.history.pushState(null, '', newUrl);
             }
         }, 300);
         return () => clearTimeout(handler);
-    }, [localSearchQuery, pathname, router, searchParams]);
+    }, [localSearchQuery, pathname, searchParams]);
 
     const updateURL = (newCategory: string, newQuery: string, newPage: number) => {
         const params = new URLSearchParams();
@@ -53,36 +69,54 @@ export const useAITools = (itemsPerPage: number = 8) => {
         if (newQuery) params.set('q', newQuery);
         if (newPage > 1) params.set('page', newPage.toString());
         
-        router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+        const queryString = params.toString();
+        const newUrl = queryString ? `${pathname}?${queryString}` : pathname;
+        window.history.pushState(null, '', newUrl);
     };
 
     const handleCategoryChange = (category: string) => {
+        setLocalCategory(category);
+        setLocalPage(1);
         updateURL(category, localSearchQuery, 1);
     };
 
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setLocalSearchQuery(e.target.value);
+        setLocalPage(1);
     };
 
     const handlePageChange = (page: number) => {
-        updateURL(activeCategory, localSearchQuery, page);
+        setLocalPage(page);
+        updateURL(localCategory, localSearchQuery, page);
     };
 
     const filteredTools = useMemo(() => {
         return toolsData.filter(tool => {
             const matchesSearch = tool.name.toLowerCase().includes(localSearchQuery.toLowerCase());
-            const matchesCategory = activeCategory === 'All' || (tool.categories && tool.categories.includes(activeCategory));
+            const matchesCategory = localCategory === 'All' || (tool.categories && tool.categories.includes(localCategory));
             return matchesSearch && matchesCategory;
         });
-    }, [toolsData, localSearchQuery, activeCategory]);
+    }, [toolsData, localSearchQuery, localCategory]);
+
+    // Sync local states with URL if URL changes externally (e.g. Back/Forward)
+    useEffect(() => {
+        const currentQ = searchParams.get('q') || '';
+        const currentCat = searchParams.get('category') || 'All';
+        const currentPg = Number(searchParams.get('page')) || 1;
+        
+        setLocalSearchQuery(currentQ);
+        setLocalCategory(currentCat);
+        setLocalPage(currentPg);
+    }, [searchParams.get('q'), searchParams.get('category'), searchParams.get('page')]);
 
     const totalItems = filteredTools.length;
-    const totalPages = Math.ceil(totalItems / itemsPerPage);
+    const totalPages = Math.max(1, Math.ceil(totalItems / itemsPerPage));
+    const validCurrentPage = Math.min(Math.max(1, localPage), totalPages);
 
     const displayedTools = useMemo(() => {
-        const startIndex = (currentPage - 1) * itemsPerPage;
+        const startIndex = (validCurrentPage - 1) * itemsPerPage;
         return filteredTools.slice(startIndex, startIndex + itemsPerPage);
-    }, [filteredTools, currentPage, itemsPerPage]);
+    }, [filteredTools, validCurrentPage, itemsPerPage]);
 
     return {
         displayedTools,
@@ -90,11 +124,11 @@ export const useAITools = (itemsPerPage: number = 8) => {
         error,
         localSearchQuery,
         handleSearchChange,
-        activeCategory,
+        activeCategory: localCategory,
         handleCategoryChange,
-        currentPage,
+        currentPage: validCurrentPage,
         handlePageChange,
         totalPages,
         totalItems
     };
-};
+}

@@ -184,31 +184,31 @@ export default function DetailClient() {
                     href={tool.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg font-medium text-sm text-white bg-blue-600 hover:bg-blue-500 transition-all shadow-md shadow-blue-500/20"
+                    className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 md:px-3 md:py-1.5 rounded-lg font-medium text-[14.5px] md:text-sm text-white bg-blue-600 hover:bg-blue-500 transition-all shadow-md shadow-blue-500/20"
                   >
                     Visit Website
-                    <FaExternalLinkAlt className="w-3 h-3" />
+                    <FaExternalLinkAlt className="w-3.5 h-3.5 md:w-3 md:h-3" />
                   </a>
                 )}
 
                 {tool.twitter && (
                   <a href={tool.twitter} target="_blank" rel="noopener noreferrer" className="cursor-pointer opacity-70 hover:opacity-100 transition-opacity text-fill-color">
-                    <FaXTwitter className="w-5 h-5" />
+                    <FaXTwitter className="w-[21px] h-[21px] md:w-5 md:h-5" />
                   </a>
                 )}
                 {tool.instagram && (
                   <a href={tool.instagram} target="_blank" rel="noopener noreferrer" className="cursor-pointer opacity-70 hover:opacity-100 transition-opacity text-fill-color">
-                    <FaInstagram className="w-5 h-5" />
+                    <FaInstagram className="w-[21px] h-[21px] md:w-5 md:h-5" />
                   </a>
                 )}
                 {tool.discord && (
                   <a href={tool.discord} target="_blank" rel="noopener noreferrer" className="cursor-pointer opacity-70 hover:opacity-100 transition-opacity text-fill-color">
-                    <BsDiscord className="w-5 h-5" />
+                    <BsDiscord className="w-[21px] h-[21px] md:w-5 md:h-5" />
                   </a>
                 )}
                 {tool.telegram && (
                   <a href={tool.telegram} target="_blank" rel="noopener noreferrer" className="cursor-pointer opacity-70 hover:opacity-100 transition-opacity text-fill-color">
-                    <FaTelegram className="w-5 h-5" />
+                    <FaTelegram className="w-[21px] h-[21px] md:w-5 md:h-5" />
                   </a>
                 )}
               </div>

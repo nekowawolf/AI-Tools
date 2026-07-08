@@ -1,9 +1,9 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AIToolsContent from "./AIToolsContent";
-import { dashboardMetadata } from "@/constants/metadataTemplates";
+import { aiToolsMetadata } from "@/constants/metadataTemplates";
 
-export const metadata = dashboardMetadata("AI Tools", "AI Tools Directory");
+export const metadata = aiToolsMetadata("AI Tools", "AI Tools Directory");
 
 export default function AIToolsPage() {
   return (

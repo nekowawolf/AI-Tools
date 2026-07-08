@@ -89,16 +89,16 @@ export default function Header() {
                 AI Tools
               </Link>
               <Link
-                href="https://cc.nekowawolf.xyz/" target="_blank"
+                href="/news"
                 className="text-fill-color/70 font-semibold hover:!text-blue-600 transition-colors duration-300"
               >
-                Crypto Community
+                News
               </Link>
               <Link
-                href="https://web3.nekowawolf.xyz/" target="_blank"
+                href="/activity"
                 className="text-fill-color/70 font-semibold hover:!text-blue-600 transition-colors duration-300"
               >
-                Web3 Tools
+                Activity
               </Link>
             </nav>
 
@@ -158,18 +158,18 @@ export default function Header() {
               AI Tools
             </Link>
             <Link
-              href="https://cc.nekowawolf.xyz/" target="_blank"
+              href="/news"
               onClick={() => setIsMenuOpen(false)}
               className="block font-semibold text-fill-color/70 hover:!text-blue-600 transition-colors duration-300"
             >
-              Crypto Community
+              News
             </Link>
             <Link
-              href="https://web3.nekowawolf.xyz/" target="_blank"
+              href="/activity"
               onClick={() => setIsMenuOpen(false)}
               className="block font-semibold text-fill-color/70 hover:!text-blue-600 transition-colors duration-300"
             >
-              Web3 Tools
+              Activity
             </Link>
 
             <div className="flex gap-3 pt-2">

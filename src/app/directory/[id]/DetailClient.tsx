@@ -8,7 +8,7 @@ import { AITool } from "@/types/aitool";
 import { Spinner } from "@/components/ui/spinner";
 import { FallbackImage } from "@/components/FallbackImage";
 import { FaExternalLinkAlt, FaPlayCircle } from "react-icons/fa";
-import { FaXTwitter, FaTelegram, FaInstagram } from "react-icons/fa6";
+import { FaXTwitter, FaYoutube, FaInstagram } from "react-icons/fa6";
 import { BsDiscord } from "react-icons/bs";
 import BackButton from "@/components/BackButton";
 
@@ -201,14 +201,14 @@ export default function DetailClient() {
                     <FaInstagram className="w-[21px] h-[21px] md:w-5 md:h-5" />
                   </a>
                 )}
+                {tool.youtube && (
+                  <a href={tool.youtube} target="_blank" rel="noopener noreferrer" className="cursor-pointer opacity-70 hover:opacity-100 transition-opacity text-fill-color">
+                    <FaYoutube className="w-[21px] h-[21px] md:w-5 md:h-5" />
+                  </a>
+                )}
                 {tool.discord && (
                   <a href={tool.discord} target="_blank" rel="noopener noreferrer" className="cursor-pointer opacity-70 hover:opacity-100 transition-opacity text-fill-color">
                     <BsDiscord className="w-[21px] h-[21px] md:w-5 md:h-5" />
-                  </a>
-                )}
-                {tool.telegram && (
-                  <a href={tool.telegram} target="_blank" rel="noopener noreferrer" className="cursor-pointer opacity-70 hover:opacity-100 transition-opacity text-fill-color">
-                    <FaTelegram className="w-[21px] h-[21px] md:w-5 md:h-5" />
                   </a>
                 )}
               </div>

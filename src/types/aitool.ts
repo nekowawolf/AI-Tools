@@ -9,5 +9,5 @@ export interface AITool {
     twitter?: string;
     instagram?: string;
     discord?: string;
-    telegram?: string;
+    youtube?: string;
 }

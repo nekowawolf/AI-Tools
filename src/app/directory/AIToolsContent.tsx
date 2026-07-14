@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Pagination from '@/components/Pagination';
 import { useAITools } from '@/hooks/useAITools';
 import { Spinner } from '@/components/ui/spinner';
+import { CgClose } from "react-icons/cg";
 
 const ITEMS_PER_PAGE = 8;
 
@@ -41,6 +42,7 @@ function AIToolsContentInner() {
         error,
         localSearchQuery,
         handleSearchChange,
+        handleClearSearch,
         activeCategory,
         handleCategoryChange,
         currentPage,
@@ -102,8 +104,17 @@ function AIToolsContentInner() {
                         placeholder="Search AI"
                         value={localSearchQuery}
                         onChange={handleSearchChange}
-                        className="w-full py-3 pl-12 pr-6 rounded-full card-color border border-color focus:outline-none focus:border-blue-500 text-fill-color placeholder:text-fill-color/50 transition-colors"
+                        className="w-full py-3 pl-12 pr-12 rounded-full card-color border border-color focus:outline-none focus:border-blue-500 text-fill-color placeholder:text-fill-color/50 transition-colors"
                     />
+                    {localSearchQuery && (
+                        <button
+                            onClick={handleClearSearch}
+                            className="absolute right-4 top-1/2 -translate-y-1/2 opacity-70 hover:opacity-100 transition-opacity text-fill-color cursor-pointer"
+                            aria-label="Clear search"
+                        >
+                            <CgClose className="w-5 h-5" />
+                        </button>
+                    )}
                 </div>
 
                 {/* Categories */}

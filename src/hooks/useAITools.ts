@@ -118,12 +118,18 @@ export const useAITools = (itemsPerPage: number = 8) => {
         return filteredTools.slice(startIndex, startIndex + itemsPerPage);
     }, [filteredTools, validCurrentPage, itemsPerPage]);
 
+    const handleClearSearch = () => {
+        setLocalSearchQuery('');
+        setLocalPage(1);
+    };
+
     return {
         displayedTools,
         loading,
         error,
         localSearchQuery,
         handleSearchChange,
+        handleClearSearch,
         activeCategory: localCategory,
         handleCategoryChange,
         currentPage: validCurrentPage,

@@ -11,6 +11,7 @@ import { FaExternalLinkAlt, FaPlayCircle } from "react-icons/fa";
 import { FaXTwitter, FaYoutube, FaInstagram } from "react-icons/fa6";
 import { BsDiscord } from "react-icons/bs";
 import BackButton from "@/components/BackButton";
+import NwwOneeAIChat from "@/components/NwwOneeAIChat";
 
 const TweetEmbed = ({ url }: { url: string }) => {
   const [loaded, setLoaded] = useState(false);
@@ -266,6 +267,7 @@ export default function DetailClient() {
         )}
 
       </div>
+      <NwwOneeAIChat />
     </main>
   );
 }

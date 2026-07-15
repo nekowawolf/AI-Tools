@@ -6,6 +6,7 @@ import Pagination from '@/components/Pagination';
 import { useAITools } from '@/hooks/useAITools';
 import { Spinner } from '@/components/ui/spinner';
 import { CgClose } from "react-icons/cg";
+import NwwOneeAIChat from '@/components/NwwOneeAIChat';
 
 const ITEMS_PER_PAGE = 8;
 
@@ -217,6 +218,7 @@ function AIToolsContentInner() {
                     </div>
                 )}
             </div>
+            <NwwOneeAIChat />
         </div>
     );
 }

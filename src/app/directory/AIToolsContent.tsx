@@ -19,6 +19,7 @@ const categories = [
     "Chatbot",
     "Coding",
     "3D",
+    "Document",
     "Research",
 ];
 

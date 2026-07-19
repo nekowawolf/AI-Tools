@@ -119,15 +119,15 @@ export default function DetailClient() {
   if (!tool) {
     return (
       <main className="flex-grow pt-36 min-h-screen flex items-center justify-center text-fill-color">
-        <div className="text-center flex flex-col items-center">
+        <div className="text-center flex flex-col items-center -mt-32">
           <FallbackImage
-            src="https://nekowawolf.github.io/cdn-images/images/2026/1771661079_pixchan.png"
+            src="https://nekowawolf.github.io/cdn-images/images/2026/1784476217_nwwonee_search.webp"
             alt="AI Not Found"
-            width={176}
-            height={176}
-            className="mx-auto mb-2"
+            width={160}
+            height={160}
+            className="mx-auto -mb-4"
           />
-          <h1 className="text-lg font-bold mb-6 text-fill-color/50">AI Not Found</h1>
+          <h1 className="text-lg font-bold mb-8 text-fill-color/50">AI Not Found</h1>
           <Link href="/directory" className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg font-medium text-sm text-white bg-blue-600 hover:bg-blue-500 transition-all shadow-md shadow-blue-500/20">
             Back to AI Tools
           </Link>

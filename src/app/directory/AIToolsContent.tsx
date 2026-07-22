@@ -144,7 +144,7 @@ function AIToolsContentInner() {
                         ))}
                     </div>
                     {/* Fade indicator */}
-                    <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-blue-600/20 to-transparent pointer-events-none" />
+                    <div className="absolute right-0 top-0 h-8 w-12 bg-gradient-to-l from-blue-600/20 to-transparent pointer-events-none" />
                 </div>
 
                 {loading ? (

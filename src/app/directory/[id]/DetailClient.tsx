@@ -11,7 +11,8 @@ import { FaExternalLinkAlt, FaPlayCircle } from "react-icons/fa";
 import { FaXTwitter, FaYoutube, FaInstagram } from "react-icons/fa6";
 import { BsDiscord } from "react-icons/bs";
 import BackButton from "@/components/BackButton";
-import NwwOneeAIChat from "@/components/NwwOneeAIChat";
+import NwwOneeAIChat, { chatStore } from "@/components/NwwOneeAIChat";
+import { CiBookmark } from "react-icons/ci";
 
 const TweetEmbed = ({ url }: { url: string }) => {
   const [loaded, setLoaded] = useState(false);
@@ -143,6 +144,16 @@ export default function DetailClient() {
 
         {/* Header Section */}
         <div className="glass-card rounded-3xl p-7 mb-8 border border-white/10 relative overflow-hidden">
+          <button 
+            onClick={() => {
+              chatStore.setIsOpen(true);
+              chatStore.setActiveView('user');
+            }}
+            className="absolute top-6 right-6 z-20 cursor-pointer opacity-70 hover:opacity-100 transition-all text-fill-color"
+            title="Bookmark"
+          >
+            <CiBookmark className="w-6 h-6" />
+          </button>
           <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
             <FallbackImage
               src={tool.imgURL}

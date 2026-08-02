@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import { fetchAIToolById } from "@/services/aiToolService";
+import { fetchAIToolById, fetchAIToolsData } from "@/services/aiToolService";
 import { AITool } from "@/types/aitool";
 import { Spinner } from "@/components/ui/spinner";
 import { FallbackImage } from "@/components/FallbackImage";
@@ -81,6 +81,7 @@ export default function DetailClient() {
   const { id } = useParams();
   const router = useRouter();
   const [tool, setTool] = useState<AITool | null>(null);
+  const [suggestedTools, setSuggestedTools] = useState<AITool[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -98,8 +99,24 @@ export default function DetailClient() {
     const fetchDetail = async () => {
       setLoading(true);
       try {
-        const data = await fetchAIToolById(id as string);
-        setTool(data);
+        const allTools = await fetchAIToolsData();
+        const foundTool = allTools.find((t) => t._id.toString() === id);
+        
+        if (foundTool) {
+          setTool(foundTool);
+          
+          const otherTools = allTools.filter(t => t._id.toString() !== id);
+          
+          const sameCat = otherTools.filter(t => t.categories.some(c => foundTool.categories.includes(c)));
+          const shuffledSame = [...sameCat].sort(() => 0.5 - Math.random());
+          const selectedSame = shuffledSame.slice(0, 3);
+          
+          const remaining = otherTools.filter(t => !selectedSame.some(s => s._id === t._id));
+          const shuffledRemaining = [...remaining].sort(() => 0.5 - Math.random());
+          const selectedRand = shuffledRemaining.slice(0, 3);
+          
+          setSuggestedTools([...selectedSame, ...selectedRand].sort(() => 0.5 - Math.random()));
+        }
       } catch (error) {
         console.error(error);
       } finally {
@@ -198,8 +215,8 @@ export default function DetailClient() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 md:px-3 md:py-1.5 rounded-lg font-medium text-[14.5px] md:text-sm text-white bg-blue-600 hover:bg-blue-500 transition-all shadow-md shadow-blue-500/20"
                   >
-                    Visit Website
                     <FaExternalLinkAlt className="w-3.5 h-3.5 md:w-3 md:h-3" />
+                    Visit Website
                   </a>
                 )}
 
@@ -273,6 +290,59 @@ export default function DetailClient() {
                   </a>
                 );
               })()}
+            </div>
+          </div>
+        )}
+
+        {/* Explore Other AI Tools Section */}
+        {suggestedTools.length > 0 && (
+          <div className="glass-card rounded-3xl p-8 mt-8 mb-8 border border-[var(--border-divider)] overflow-hidden relative">
+            <div className="flex items-center gap-3 mb-6 pb-4 border-b border-[var(--border-divider)] relative z-10">
+              <h2 className="text-2xl font-bold text-fill-color">Explore Other AI Tools</h2>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 relative z-10">
+              {suggestedTools.map((sTool) => (
+                <Link 
+                  key={sTool._id} 
+                  href={`/directory/${sTool._id}`}
+                  className="flex flex-col h-full p-5 rounded-2xl bg-[rgba(var(--fill-color-rgb),0.03)] border border-[var(--border-divider)] hover:bg-[rgba(var(--fill-color-rgb),0.06)] hover:border-blue-500/30 transition-all cursor-pointer group"
+                >
+                  <div className="flex items-start justify-between mb-4 pb-4 border-b border-[var(--border-divider)]">
+                    <div className="flex items-center gap-3">
+                      <FallbackImage
+                        src={sTool.imgURL}
+                        alt={sTool.name}
+                        width={40}
+                        height={40}
+                        className="w-10 h-10 rounded-xl object-contain bg-black/20 p-1 shrink-0"
+                        unoptimized
+                      />
+                      <div className="flex flex-col">
+                        <h3 className="text-sm font-bold group-hover:text-blue-400 transition-colors line-clamp-1">
+                          {sTool.name}
+                        </h3>
+                      </div>
+                    </div>
+                    {sTool.categories && sTool.categories.length > 0 && (
+                      <div className="flex items-center gap-1.5 ml-2">
+                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 whitespace-nowrap">
+                          {sTool.categories[0]}
+                        </span>
+                        {sTool.categories.length > 1 && (
+                          <span className="text-[10px] px-2 py-0.5 rounded-md border border-color bg-card-color text-fill-color/70 font-bold whitespace-nowrap">
+                            +{sTool.categories.length - 1}
+                          </span>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                  
+                  <p className="text-xs text-fill-color/60 line-clamp-2 mt-auto flex-grow">
+                    {sTool.description}
+                  </p>
+                </Link>
+              ))}
             </div>
           </div>
         )}

@@ -202,7 +202,7 @@ function AIToolsContentInner() {
                                     >
                                         <div className="mb-4 w-full aspect-square max-w-[80px] relative rounded-xl overflow-hidden bg-card-color mx-auto group-hover:scale-105 transition-transform">
                                             <FallbackImage
-                                                src={tool.imgURL}
+                                                src={tool.image_url}
                                                 alt={tool.name}
                                                 fill
                                                 className="object-cover"

@@ -3,7 +3,7 @@ export interface AITool {
     name: string;
     description: string;
     categories: string[];
-    imgURL: string;
+    image_url: string;
     video_url?: string;
     website?: string;
     twitter?: string;

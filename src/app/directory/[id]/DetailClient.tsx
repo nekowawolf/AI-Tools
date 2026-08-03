@@ -173,7 +173,7 @@ export default function DetailClient() {
           </button>
           <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
             <FallbackImage
-              src={tool.imgURL}
+              src={tool.image_url}
               alt=""
               width={256}
               height={256}
@@ -184,7 +184,7 @@ export default function DetailClient() {
 
           <div className="relative z-10 flex flex-col md:flex-row gap-6 items-start">
             <FallbackImage
-              src={tool.imgURL}
+              src={tool.image_url}
               alt={tool.name}
               width={112}
               height={112}
@@ -311,7 +311,7 @@ export default function DetailClient() {
                   <div className="flex items-start justify-between mb-4 pb-4 border-b border-[var(--border-divider)]">
                     <div className="flex items-center gap-3">
                       <FallbackImage
-                        src={sTool.imgURL}
+                        src={sTool.image_url}
                         alt={sTool.name}
                         width={40}
                         height={40}

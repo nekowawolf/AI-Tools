@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import { fetchAIToolById, fetchAIToolsData } from "@/services/aiToolService";
+import { fetchAIToolsData } from "@/services/aiToolService";
 import { AITool } from "@/types/aitool";
 import { Spinner } from "@/components/ui/spinner";
 import { FallbackImage } from "@/components/FallbackImage";
@@ -15,68 +15,7 @@ import NwwOneeAIChat, { chatStore } from "@/components/NwwOneeAIChat";
 import { CiBookmark } from "react-icons/ci";
 import { HiOutlinePhotograph } from "react-icons/hi";
 
-const TweetEmbed = ({ url }: { url: string }) => {
-  const [loaded, setLoaded] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    let isMounted = true;
-    
-    const renderTweet = () => {
-      const tweetId = url.match(/\/status\/(\d+)/)?.[1];
-      if (!tweetId) {
-        if (isMounted) setLoaded(true);
-        return;
-      }
-
-      const checkTwttr = setInterval(() => {
-        if ((window as any).twttr && (window as any).twttr.widgets) {
-          clearInterval(checkTwttr);
-          
-          if (containerRef.current) {
-            containerRef.current.innerHTML = '';
-            (window as any).twttr.widgets.createTweet(
-              tweetId,
-              containerRef.current,
-              { theme: 'dark', align: 'center' }
-            ).then(() => {
-              if (isMounted) setLoaded(true);
-            });
-          }
-        }
-      }, 100);
-    };
-
-    renderTweet();
-
-    return () => {
-      isMounted = false;
-    };
-  }, [url]);
-
-  return (
-    <div className="w-full max-w-xl relative z-10 flex flex-col items-center min-h-[400px]">
-      {!loaded && (
-        <div className="absolute top-0 w-full p-6 rounded-2xl border border-white/10 bg-white/5 animate-pulse flex flex-col gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-full bg-white/10"></div>
-            <div className="flex flex-col gap-2">
-              <div className="w-32 h-4 rounded bg-white/10"></div>
-              <div className="w-20 h-3 rounded bg-white/10"></div>
-            </div>
-          </div>
-          <div className="w-full h-4 rounded bg-white/10 mt-2"></div>
-          <div className="w-5/6 h-4 rounded bg-white/10"></div>
-          <div className="w-full h-48 rounded-xl bg-white/10 mt-2"></div>
-        </div>
-      )}
-      <div 
-        ref={containerRef} 
-        className={`w-full flex justify-center transition-opacity duration-300 ${loaded ? 'opacity-100' : 'opacity-0'}`} 
-      />
-    </div>
-  );
-};
 
 export default function DetailClient() {
   const { id } = useParams();
@@ -86,15 +25,7 @@ export default function DetailClient() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Load Twitter widget script if not already loaded
-    if (!(window as any).twttr) {
-      const script = document.createElement('script');
-      script.src = 'https://platform.twitter.com/widgets.js';
-      script.async = true;
-      document.body.appendChild(script);
-    } else if ((window as any).twttr.widgets) {
-      (window as any).twttr.widgets.load();
-    }
+
 
     if (!id) return;
     const fetchDetail = async () => {
@@ -256,66 +187,67 @@ export default function DetailClient() {
               <h2 className="text-xl font-bold">Preview</h2>
             </div>
             
-            <div className="w-full flex gap-4 overflow-x-auto pb-4 snap-x max-md:[&::-webkit-scrollbar]:hidden max-md:[-ms-overflow-style:none] max-md:[scrollbar-width:none] [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-blue-500/30 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-blue-500/60">
-              {/* Video Content */}
-              {tool.media?.video_url && (
-                <>
-                  {(() => {
-                    const url = tool.media!.video_url!;
-                    if (url.includes('youtube.com') || url.includes('youtu.be')) {
-                      const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-                      const match = url.match(regExp);
-                      const videoId = (match && match[2].length === 11) ? match[2] : null;
-                      
-                      if (videoId) {
+            {(() => {
+              const videoCount = tool.media?.video_url ? 1 : 0;
+              const screenshotCount = tool.media?.screenshot_urls ? tool.media.screenshot_urls.length : 0;
+              const totalMedia = videoCount + screenshotCount;
+              
+              return (
+                <div className={`w-full flex gap-4 overflow-x-auto pb-4 snap-x [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-blue-500/30 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-blue-500/60 ${totalMedia === 1 ? 'justify-center' : ''}`}>
+                  {/* Video Content */}
+                  {tool.media?.video_url && (
+                    <>
+                      {(() => {
+                        const url = tool.media!.video_url!;
+                        if (url.includes('youtube.com') || url.includes('youtu.be')) {
+                          const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+                          const match = url.match(regExp);
+                          const videoId = (match && match[2].length === 11) ? match[2] : null;
+                          
+                          if (videoId) {
+                            return (
+                              <div className="flex-shrink-0 w-[75vw] sm:w-[85vw] md:w-[600px] aspect-video rounded-xl overflow-hidden border border-white/5 snap-center bg-black/40 relative">
+                                <iframe 
+                                  width="100%" 
+                                  height="100%" 
+                                  src={`https://www.youtube.com/embed/${videoId}`} 
+                                  title="YouTube video player" 
+                                  frameBorder="0" 
+                                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                  allowFullScreen
+                                ></iframe>
+                              </div>
+                            );
+                          }
+                        }
+                        
                         return (
-                          <div className="flex-shrink-0 w-[85vw] md:w-[600px] aspect-video rounded-xl overflow-hidden border border-white/5 snap-center bg-black/40 relative">
-                            <iframe 
-                              width="100%" 
-                              height="100%" 
-                              src={`https://www.youtube.com/embed/${videoId}`} 
-                              title="YouTube video player" 
-                              frameBorder="0" 
-                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                              allowFullScreen
-                            ></iframe>
+                          <div className="flex-shrink-0 w-[75vw] sm:w-[85vw] md:w-[600px] aspect-video rounded-xl overflow-hidden border border-white/5 snap-center bg-black/40 relative flex items-center justify-center">
+                            <a href={url} target="_blank" rel="noopener noreferrer" className="cursor-pointer inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-medium text-white bg-blue-600 hover:bg-blue-500 transition-all shadow-lg shadow-blue-500/20">
+                              <FaPlayCircle className="w-4 h-4" />
+                              Watch Video
+                            </a>
                           </div>
                         );
-                      }
-                    } else if (url.includes('twitter.com') || url.includes('x.com')) {
-                      const tweetUrl = url.replace('x.com', 'twitter.com');
-                      return (
-                        <div className="flex-shrink-0 w-[85vw] md:w-[600px] aspect-video rounded-xl overflow-hidden border border-white/5 snap-center bg-black/40 relative overflow-y-auto">
-                          <TweetEmbed url={tweetUrl} />
-                        </div>
-                      );
-                    }
-                    
-                    return (
-                      <div className="flex-shrink-0 w-[85vw] md:w-[600px] aspect-video rounded-xl overflow-hidden border border-white/5 snap-center bg-black/40 relative flex items-center justify-center">
-                        <a href={url} target="_blank" rel="noopener noreferrer" className="cursor-pointer inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-medium text-white bg-blue-600 hover:bg-blue-500 transition-all shadow-lg shadow-blue-500/20">
-                          <FaPlayCircle className="w-4 h-4" />
-                          Watch Video
-                        </a>
-                      </div>
-                    );
-                  })()}
-                </>
-              )}
+                      })()}
+                    </>
+                  )}
 
-              {/* Screenshots Content */}
-              {tool.media?.screenshot_urls && tool.media.screenshot_urls.map((url, index) => (
-                <div key={index} className="flex-shrink-0 w-[85vw] md:w-[600px] aspect-video rounded-xl overflow-hidden border border-white/5 snap-center bg-black/40 relative">
-                  <FallbackImage
-                    src={url}
-                    alt={`${tool.name} Screenshot ${index + 1}`}
-                    fill
-                    className="w-full h-full object-cover"
-                    unoptimized
-                  />
+                  {/* Screenshots Content */}
+                  {tool.media?.screenshot_urls && tool.media.screenshot_urls.map((url, index) => (
+                    <div key={index} className="flex-shrink-0 w-[75vw] sm:w-[85vw] md:w-[600px] aspect-video rounded-xl overflow-hidden border border-white/5 snap-center bg-black/40 relative">
+                      <FallbackImage
+                        src={url}
+                        alt={`${tool.name} Screenshot ${index + 1}`}
+                        fill
+                        className="w-full h-full object-cover"
+                        unoptimized
+                      />
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              );
+            })()}
           </div>
         )}
 

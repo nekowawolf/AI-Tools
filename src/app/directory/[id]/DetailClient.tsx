@@ -13,6 +13,7 @@ import { BsDiscord } from "react-icons/bs";
 import BackButton from "@/components/BackButton";
 import NwwOneeAIChat, { chatStore } from "@/components/NwwOneeAIChat";
 import { CiBookmark } from "react-icons/ci";
+import { HiOutlinePhotograph } from "react-icons/hi";
 
 const TweetEmbed = ({ url }: { url: string }) => {
   const [loaded, setLoaded] = useState(false);
@@ -208,9 +209,9 @@ export default function DetailClient() {
               </p>
               {/* Buttons & Links */}
               <div className="flex flex-wrap items-center gap-4 mt-6">
-                {tool.website && (
+                {tool.socials?.website && (
                   <a
-                    href={tool.website}
+                    href={tool.socials.website}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 md:px-3 md:py-1.5 rounded-lg font-medium text-[14.5px] md:text-sm text-white bg-blue-600 hover:bg-blue-500 transition-all shadow-md shadow-blue-500/20"
@@ -220,23 +221,23 @@ export default function DetailClient() {
                   </a>
                 )}
 
-                {tool.twitter && (
-                  <a href={tool.twitter} target="_blank" rel="noopener noreferrer" className="cursor-pointer opacity-70 hover:opacity-100 transition-opacity text-fill-color">
+                {tool.socials?.twitter && (
+                  <a href={tool.socials.twitter} target="_blank" rel="noopener noreferrer" className="cursor-pointer opacity-70 hover:opacity-100 transition-opacity text-fill-color">
                     <FaXTwitter className="w-[21px] h-[21px] md:w-5 md:h-5" />
                   </a>
                 )}
-                {tool.instagram && (
-                  <a href={tool.instagram} target="_blank" rel="noopener noreferrer" className="cursor-pointer opacity-70 hover:opacity-100 transition-opacity text-fill-color">
+                {tool.socials?.instagram && (
+                  <a href={tool.socials.instagram} target="_blank" rel="noopener noreferrer" className="cursor-pointer opacity-70 hover:opacity-100 transition-opacity text-fill-color">
                     <FaInstagram className="w-[21px] h-[21px] md:w-5 md:h-5" />
                   </a>
                 )}
-                {tool.youtube && (
-                  <a href={tool.youtube} target="_blank" rel="noopener noreferrer" className="cursor-pointer opacity-70 hover:opacity-100 transition-opacity text-fill-color">
+                {tool.socials?.youtube && (
+                  <a href={tool.socials.youtube} target="_blank" rel="noopener noreferrer" className="cursor-pointer opacity-70 hover:opacity-100 transition-opacity text-fill-color">
                     <FaYoutube className="w-[21px] h-[21px] md:w-5 md:h-5" />
                   </a>
                 )}
-                {tool.discord && (
-                  <a href={tool.discord} target="_blank" rel="noopener noreferrer" className="cursor-pointer opacity-70 hover:opacity-100 transition-opacity text-fill-color">
+                {tool.socials?.discord && (
+                  <a href={tool.socials.discord} target="_blank" rel="noopener noreferrer" className="cursor-pointer opacity-70 hover:opacity-100 transition-opacity text-fill-color">
                     <BsDiscord className="w-[21px] h-[21px] md:w-5 md:h-5" />
                   </a>
                 )}
@@ -245,51 +246,75 @@ export default function DetailClient() {
           </div>
         </div>
 
-        {/* Video Section */}
-        {tool.video_url && (
+        {/* Media Section */}
+        {(tool.media?.video_url || (tool.media?.screenshot_urls && tool.media.screenshot_urls.length > 0)) && (
           <div className="glass-card rounded-3xl p-7 mb-8 border border-white/10 relative overflow-hidden">
             <div className="flex items-center gap-2 mb-6">
               <div className="p-2 rounded-lg bg-blue-500/20 text-blue-500">
-                <FaPlayCircle className="w-5 h-5" />
+                <HiOutlinePhotograph className="w-5 h-5" />
               </div>
-              <h2 className="text-xl font-bold">Video Overview</h2>
+              <h2 className="text-xl font-bold">Preview</h2>
             </div>
             
-            <div className="w-full flex justify-center">
-              {(() => {
-                const url = tool.video_url;
-                if (url.includes('youtube.com') || url.includes('youtu.be')) {
-                  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-                  const match = url.match(regExp);
-                  const videoId = (match && match[2].length === 11) ? match[2] : null;
-                  
-                  if (videoId) {
+            <div className="w-full flex gap-4 overflow-x-auto pb-4 snap-x max-md:[&::-webkit-scrollbar]:hidden max-md:[-ms-overflow-style:none] max-md:[scrollbar-width:none] [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-blue-500/30 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-blue-500/60">
+              {/* Video Content */}
+              {tool.media?.video_url && (
+                <>
+                  {(() => {
+                    const url = tool.media!.video_url!;
+                    if (url.includes('youtube.com') || url.includes('youtu.be')) {
+                      const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+                      const match = url.match(regExp);
+                      const videoId = (match && match[2].length === 11) ? match[2] : null;
+                      
+                      if (videoId) {
+                        return (
+                          <div className="flex-shrink-0 w-[85vw] md:w-[600px] aspect-video rounded-xl overflow-hidden border border-white/5 snap-center bg-black/40 relative">
+                            <iframe 
+                              width="100%" 
+                              height="100%" 
+                              src={`https://www.youtube.com/embed/${videoId}`} 
+                              title="YouTube video player" 
+                              frameBorder="0" 
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                              allowFullScreen
+                            ></iframe>
+                          </div>
+                        );
+                      }
+                    } else if (url.includes('twitter.com') || url.includes('x.com')) {
+                      const tweetUrl = url.replace('x.com', 'twitter.com');
+                      return (
+                        <div className="flex-shrink-0 w-[85vw] md:w-[600px] aspect-video rounded-xl overflow-hidden border border-white/5 snap-center bg-black/40 relative overflow-y-auto">
+                          <TweetEmbed url={tweetUrl} />
+                        </div>
+                      );
+                    }
+                    
                     return (
-                      <div className="w-full max-w-4xl aspect-video rounded-2xl overflow-hidden bg-black/40 border border-white/5 shadow-2xl shadow-black/50 relative z-10">
-                        <iframe 
-                          width="100%" 
-                          height="100%" 
-                          src={`https://www.youtube.com/embed/${videoId}`} 
-                          title="YouTube video player" 
-                          frameBorder="0" 
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                          allowFullScreen
-                        ></iframe>
+                      <div className="flex-shrink-0 w-[85vw] md:w-[600px] aspect-video rounded-xl overflow-hidden border border-white/5 snap-center bg-black/40 relative flex items-center justify-center">
+                        <a href={url} target="_blank" rel="noopener noreferrer" className="cursor-pointer inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-medium text-white bg-blue-600 hover:bg-blue-500 transition-all shadow-lg shadow-blue-500/20">
+                          <FaPlayCircle className="w-4 h-4" />
+                          Watch Video
+                        </a>
                       </div>
                     );
-                  }
-                } else if (url.includes('twitter.com') || url.includes('x.com')) {
-                  const tweetUrl = url.replace('x.com', 'twitter.com');
-                  return <TweetEmbed url={tweetUrl} />;
-                }
-                
-                return (
-                  <a href={url} target="_blank" rel="noopener noreferrer" className="cursor-pointer inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-medium text-white bg-blue-600 hover:bg-blue-500 transition-all shadow-lg shadow-blue-500/20 relative z-10">
-                    <FaPlayCircle className="w-4 h-4" />
-                    Watch Video
-                  </a>
-                );
-              })()}
+                  })()}
+                </>
+              )}
+
+              {/* Screenshots Content */}
+              {tool.media?.screenshot_urls && tool.media.screenshot_urls.map((url, index) => (
+                <div key={index} className="flex-shrink-0 w-[85vw] md:w-[600px] aspect-video rounded-xl overflow-hidden border border-white/5 snap-center bg-black/40 relative">
+                  <FallbackImage
+                    src={url}
+                    alt={`${tool.name} Screenshot ${index + 1}`}
+                    fill
+                    className="w-full h-full object-cover"
+                    unoptimized
+                  />
+                </div>
+              ))}
             </div>
           </div>
         )}

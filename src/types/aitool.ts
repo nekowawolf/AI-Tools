@@ -4,10 +4,15 @@ export interface AITool {
     description: string;
     categories: string[];
     image_url: string;
-    video_url?: string;
-    website?: string;
-    twitter?: string;
-    instagram?: string;
-    discord?: string;
-    youtube?: string;
+    media: {
+        video_url?: string;
+        screenshot_urls?: string[];
+    };
+    socials: {
+        website?: string;
+        twitter?: string;
+        instagram?: string;
+        discord?: string;
+        youtube?: string;
+    };
 }

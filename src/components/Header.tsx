@@ -90,10 +90,10 @@ export default function Header() {
                 AI Tools
               </Link>
               <Link
-                href="/news"
+                href="/blog"
                 className="text-fill-color/70 font-semibold hover:!text-blue-600 transition-colors duration-300"
               >
-                News
+                Blog
               </Link>
               <Link
                 href="/activity"
@@ -159,11 +159,11 @@ export default function Header() {
               AI Tools
             </Link>
             <Link
-              href="/news"
+              href="/blog"
               onClick={() => setIsMenuOpen(false)}
               className="block font-semibold text-fill-color/70 hover:!text-blue-600 transition-colors duration-300"
             >
-              News
+              Blog
             </Link>
             <Link
               href="/activity"

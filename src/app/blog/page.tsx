@@ -3,9 +3,9 @@ import Footer from "@/components/Footer";
 import { aiToolsMetadata } from "@/constants/metadataTemplates";
 import DetailClient from "./DetailClient";
 
-export const metadata = aiToolsMetadata("News", "The latest news and updates from various AI tools.");
+export const metadata = aiToolsMetadata("Blog", "Articles, reviews, deep dives, and analysis.");
 
-export default function NewsPage() {
+export default function BlogPage() {
   return (
     <>
       <Header />

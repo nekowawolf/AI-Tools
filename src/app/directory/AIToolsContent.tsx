@@ -50,7 +50,9 @@ function AIToolsContentInner() {
         currentPage,
         handlePageChange,
         totalPages,
-        totalItems
+        totalItems,
+        suggestion,
+        handleSuggestionClick
     } = useAITools(ITEMS_PER_PAGE);
 
     const scrollRef = useRef<HTMLDivElement>(null);
@@ -124,11 +126,11 @@ function AIToolsContentInner() {
 
                 {/* Search Bar */}
                 <div className="w-full max-w-xl mb-6 relative">
-                   <div className="absolute left-4 top-1/2 -translate-y-1/2 text-fill-color/50">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                            </svg>
-                        </div>
+                    <div className="absolute left-4 top-1/2 -translate-y-1/2 text-fill-color/50">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                        </svg>
+                    </div>
                     <input
                         type="text"
                         placeholder="Search AI"
@@ -145,6 +147,19 @@ function AIToolsContentInner() {
                             <CgClose className="w-5 h-5" />
                         </button>
                     )}
+                    
+                    <div className="absolute left-0 top-full pt-1 pl-5 w-full text-left z-10 pointer-events-none">
+                        <div className={`text-xs text-fill-color/70 transition-opacity duration-300 pointer-events-auto ${suggestion ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
+                            Did you mean:{' '}
+                            <button 
+                                onClick={() => suggestion && handleSuggestionClick(suggestion)} 
+                                className="font-semibold text-blue-500 hover:underline cursor-pointer"
+                            >
+                                {suggestion}
+                            </button>
+                            ?
+                        </div>
+                    </div>
                 </div>
 
                 {/* Categories */}

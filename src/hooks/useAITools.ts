@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { AITool } from '@/types/aitool';
 import { fetchAIToolsData } from '@/services/aiToolService';
+import Fuse from 'fuse.js';
 
 let isInitialLoad = true;
 
@@ -17,6 +18,41 @@ export const useAITools = (itemsPerPage: number = 8) => {
     const [localSearchQuery, setLocalSearchQuery] = useState(searchParams.get('q') || '');
     const [localCategory, setLocalCategory] = useState(searchParams.get('category') || 'All');
     const [localPage, setLocalPage] = useState(Number(searchParams.get('page')) || 1);
+    
+    const [suggestion, setSuggestion] = useState<string | null>(null);
+
+    useEffect(() => {
+        if (!localSearchQuery || toolsData.length === 0) {
+            setSuggestion(null);
+            return;
+        }
+
+        const exactMatchExists = toolsData.some(t => 
+            t.name.toLowerCase().includes(localSearchQuery.toLowerCase())
+        );
+
+        if (exactMatchExists) {
+            setSuggestion(null);
+            return;
+        }
+
+        const fuse = new Fuse(toolsData, {
+            keys: ['name'],
+            threshold: 0.4,
+        });
+
+        const results = fuse.search(localSearchQuery);
+        if (results.length > 0) {
+            const bestMatch = results[0].item.name;
+            if (bestMatch.toLowerCase() !== localSearchQuery.toLowerCase()) {
+                setSuggestion(bestMatch);
+            } else {
+                setSuggestion(null);
+            }
+        } else {
+            setSuggestion(null);
+        }
+    }, [localSearchQuery, toolsData]);
 
     useEffect(() => {
         const loadData = async () => {
@@ -123,6 +159,11 @@ export const useAITools = (itemsPerPage: number = 8) => {
         setLocalPage(1);
     };
 
+    const handleSuggestionClick = (newQuery: string) => {
+        setLocalSearchQuery(newQuery);
+        setLocalPage(1);
+    };
+
     return {
         displayedTools,
         loading,
@@ -135,6 +176,8 @@ export const useAITools = (itemsPerPage: number = 8) => {
         currentPage: validCurrentPage,
         handlePageChange,
         totalPages,
-        totalItems
+        totalItems,
+        suggestion,
+        handleSuggestionClick
     };
 }

@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect, useState, useRef } from "react";
-import { useParams, useRouter, notFound } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useParams, notFound } from "next/navigation";
 import Link from "next/link";
 import { fetchAIToolsData } from "@/services/aiToolService";
 import { AITool } from "@/types/aitool";
@@ -20,7 +20,6 @@ import { HiOutlinePhotograph } from "react-icons/hi";
 
 export default function DetailClient() {
   const { id } = useParams();
-  const router = useRouter();
   const [tool, setTool] = useState<AITool | null>(null);
   const [suggestedTools, setSuggestedTools] = useState<AITool[]>([]);
   const [loading, setLoading] = useState(true);
@@ -68,6 +67,8 @@ export default function DetailClient() {
   }
 
   if (!tool) return notFound();
+
+  const websiteUrl = tool.website || tool.socials?.website;
 
   return (
     <main className="flex-grow pt-36 pb-12 min-h-screen body-color text-fill-color px-4 sm:px-8 font-sans">
@@ -123,9 +124,9 @@ export default function DetailClient() {
               </p>
               {/* Buttons & Links */}
               <div className="flex flex-wrap items-center gap-4 mt-6">
-                {tool.socials?.website && (
+                {websiteUrl && (
                   <a
-                    href={tool.socials.website}
+                    href={websiteUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 md:px-3 md:py-1.5 rounded-lg font-medium text-[14.5px] md:text-sm text-white bg-blue-600 hover:bg-blue-500 transition-all shadow-md shadow-blue-500/20"

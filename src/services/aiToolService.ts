@@ -1,4 +1,4 @@
-import { AITool } from '@/types/aitool';
+import { AITool, AIToolSubmissionPayload } from '@/types/aitool';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
@@ -65,4 +65,21 @@ export const fetchAIToolById = async (id: string): Promise<AITool | null> => {
         console.error('Error fetching AI tool by ID:', error);
         return null;
     }
+};
+
+export const submitAITool = async (payload: AIToolSubmissionPayload) => {
+    const response = await fetch(`${API_BASE_URL}/ai-tool-submissions`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || errorData.message || 'Failed to submit AI Tool');
+    }
+
+    return response.json();
 };

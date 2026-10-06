@@ -4,6 +4,7 @@ export interface AITool {
     description: string;
     categories: string[];
     image_url: string;
+    website?: string;
     media: {
         video_url?: string;
         screenshot_urls?: string[];
@@ -15,4 +16,16 @@ export interface AITool {
         discord?: string;
         youtube?: string;
     };
+    added_by?: {
+        name: string;
+        url?: string;
+    };
+    created_at?: string;
+}
+
+export interface AIToolSubmissionPayload {
+    website: string;
+    name: string;
+    link?: string;
+    turnstile_token: string;
 }

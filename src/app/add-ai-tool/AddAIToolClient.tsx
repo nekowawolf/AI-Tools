@@ -71,8 +71,8 @@ export default function AddAIToolClient() {
         const trimmedName = name.trim();
         const trimmedLink = link.trim();
 
-        if (!trimmedWebsite) return toast.error('AI Tool website is required.');
-        if (!isValidHttpUrl(trimmedWebsite)) return toast.error('Website must be a valid URL starting with http:// or https://.');
+        if (!trimmedWebsite) return toast.error('Website URL is required.');
+        if (!isValidHttpUrl(trimmedWebsite)) return toast.error('Website URL must be a valid URL starting with https://.');
         if (urlExists || existingUrls.includes(normalizeUrl(trimmedWebsite))) return toast.error('This AI Tool is already listed.');
         if (!trimmedName) return toast.error('Name (added by) is required.');
         if (trimmedLink && !isValidHttpUrl(trimmedLink)) return toast.error('Contributor link must be a valid URL.');
@@ -101,7 +101,7 @@ export default function AddAIToolClient() {
     };
 
     const websiteError = website.trim() && !isValidHttpUrl(website.trim())
-        ? 'Enter a valid URL starting with http:// or https://'
+        ? 'Website URL must be a valid URL starting with https://'
         : null;
 
     return (
@@ -119,7 +119,7 @@ export default function AddAIToolClient() {
                 <form onSubmit={handleSubmit} noValidate className="flex flex-col space-y-6 w-full">
                     <div className="flex flex-col space-y-2">
                         <div className="flex items-center gap-2">
-                            <label htmlFor="ai-tool-website" className="text-sm font-semibold">Link <span className="text-red-500">*</span></label>
+                            <label htmlFor="ai-tool-website" className="text-sm font-semibold">Website URL <span className="text-red-500">*</span></label>
                             {isCheckingUrl && <Spinner className="w-3.5 h-3.5 text-blue-500" />}
                             {!isCheckingUrl && urlExists === true && <span className="text-xs text-red-500">Already listed</span>}
                             {!isCheckingUrl && urlExists === false && <span className="text-xs text-green-500">Available to submit</span>}
@@ -152,7 +152,7 @@ export default function AddAIToolClient() {
                             <Turnstile ref={turnstileRef} siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || ''} onSuccess={setTurnstileToken} onError={() => setTurnstileToken('')} onExpire={() => setTurnstileToken('')} />
                         </div>
                         <button type="submit" disabled={!turnstileToken || isSubmitting || urlExists === true} className="order-2 sm:order-1 px-6 py-3 rounded-xl font-medium text-[15px] text-white bg-blue-600 hover:bg-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg shadow-blue-500/20 flex items-center justify-center cursor-pointer w-full sm:w-fit">
-                            {isSubmitting ? <Spinner className="w-5 h-5 text-white" /> : 'Submit AI Tool'}
+                            {isSubmitting ? <Spinner className="w-5 h-5 text-white" /> : 'Add AI Tool'}
                         </button>
                     </div>
                 </form>

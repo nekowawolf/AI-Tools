@@ -228,12 +228,12 @@ function AIToolsContentInner() {
                                         <div className="flex flex-wrap gap-1.5 justify-center">
                                             {tool.categories.slice(0, 2).map((cat, index) => (
                                                 <span key={index} className="text-[10px] px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
-                                                    {cat}
+                                                    <span className="relative top-px">{cat}</span>
                                                 </span>
                                             ))}
                                             {tool.categories.length > 2 && (
                                                 <span className="text-[10px] px-2 py-0.5 rounded-md border border-color bg-card-color text-fill-color/70 font-bold">
-                                                    +{tool.categories.length - 2}
+                                                    <span className="relative top-px">+{tool.categories.length - 2}</span>
                                                 </span>
                                             )}
                                         </div>

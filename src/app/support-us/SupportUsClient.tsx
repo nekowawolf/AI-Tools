@@ -17,6 +17,7 @@ export default function SupportUsClient() {
     const [name, setName] = useState('');
     const [url, setUrl] = useState('');
     const [platform, setPlatform] = useState('Ko-fi');
+    const [proof, setProof] = useState('');
     const [turnstileToken, setTurnstileToken] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [copied, setCopied] = useState<'solana' | 'evm' | null>(null);
@@ -38,16 +39,41 @@ export default function SupportUsClient() {
         const trimmedUrl = url.trim();
 
         if (!trimmedName) return toast.error('Name is required.');
-        if (trimmedUrl && !/^https?:\/\/.+$/i.test(trimmedUrl)) return toast.error('Invalid URL.');
+        if (trimmedUrl) {
+            try {
+                const link = new URL(trimmedUrl);
+                if (link.protocol !== 'https:' && link.protocol !== 'http:') throw new Error('Invalid URL');
+            } catch {
+                return toast.error('Enter a valid HTTP or HTTPS link.');
+            }
+        }
+        if (!proof.trim()) return toast.error(platform === 'Ko-fi' ? 'Ko-fi URL is required.' : 'Crypto transaction URL is required.');
+        if (platform === 'Ko-fi') {
+            try {
+                const profile = new URL(proof);
+                if (profile.protocol !== 'https:' || profile.hostname.toLowerCase() !== 'ko-fi.com' || profile.port || profile.username || profile.password || proof !== proof.trim() || proof.length > 2048) throw new Error('Invalid profile');
+            } catch {
+                return toast.error('Enter a Ko-fi URL, such as https://ko-fi.com/username.');
+            }
+        }
+        if (platform === 'Crypto') {
+            try {
+                const transaction = new URL(proof);
+                if (!['http:', 'https:'].includes(transaction.protocol) || transaction.username || transaction.password || proof !== proof.trim()) throw new Error('Invalid transaction URL');
+            } catch {
+                return toast.error('Enter a valid Crypto transaction URL.');
+            }
+        }
         if (!turnstileToken) return toast.error('Please verify that you are a human.');
 
         setIsSubmitting(true);
         try {
-            await submitSupportRequest(trimmedName, trimmedUrl, platform, turnstileToken);
+            await submitSupportRequest(trimmedName, trimmedUrl, platform, proof, turnstileToken);
             toast.success('Support details submitted successfully.');
             setName('');
             setUrl('');
             setPlatform('Ko-fi');
+            setProof('');
             setTurnstileToken('');
             turnstileRef.current?.reset();
         } catch (error) {
@@ -112,12 +138,16 @@ export default function SupportUsClient() {
                         <legend className="text-sm font-semibold mb-2">Support platform</legend>
                         <div className="grid grid-cols-2 gap-3">
                             {['Ko-fi', 'Crypto'].map((option) => (
-                                <button key={option} type="button" onClick={() => setPlatform(option)} aria-pressed={platform === option} className={`px-4 py-3 rounded-xl border font-medium cursor-pointer transition-colors ${platform === option ? 'bg-blue-500/20 text-blue-400 border-blue-500/50' : 'bg-[rgba(var(--fill-color-rgb),0.03)] border-[var(--border-divider)] text-fill-color/70 hover:border-blue-500/50'}`}>
+                                <button key={option} type="button" onClick={() => { if (platform !== option) setProof(''); setPlatform(option); }} aria-pressed={platform === option} className={`px-4 py-3 rounded-xl border font-medium cursor-pointer transition-colors ${platform === option ? 'bg-blue-500/20 text-blue-400 border-blue-500/50' : 'bg-[rgba(var(--fill-color-rgb),0.03)] border-[var(--border-divider)] text-fill-color/70 hover:border-blue-500/50'}`}>
                                     {option}
                                 </button>
                             ))}
                         </div>
                     </fieldset>
+                    <div className="flex flex-col space-y-2">
+                        <label htmlFor="support-reference" className="text-sm font-semibold">{platform === 'Ko-fi' ? 'Ko-fi URL' : 'Crypto transaction URL'} <span className="text-red-500">*</span></label>
+                        <input key={platform} id="support-reference" type="url" value={proof} onChange={(event) => setProof(event.target.value)} placeholder={platform === 'Ko-fi' ? 'https://ko-fi.com/username' : 'https://etherscan.io/tx/0x5f...'} autoComplete="off" required className="w-full px-4 py-3 bg-[rgba(var(--fill-color-rgb),0.03)] border border-[var(--border-divider)] rounded-xl focus:outline-none focus:border-blue-500" />
+                    </div>
                     <div className="mt-6 flex flex-col sm:flex-row sm:items-center gap-5">
                         <div className="order-1 sm:order-2 flex justify-center w-full sm:w-auto">
                             <Turnstile ref={turnstileRef} siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || ''} onSuccess={setTurnstileToken} onError={() => setTurnstileToken('')} onExpire={() => setTurnstileToken('')} />

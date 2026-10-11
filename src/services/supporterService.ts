@@ -21,6 +21,7 @@ export async function submitSupportRequest(
     name: string,
     url: string,
     platform: string,
+    proof: string,
     turnstileToken: string,
 ) {
     const response = await fetch(`${API_BASE_URL}/support-requests`, {
@@ -32,6 +33,7 @@ export async function submitSupportRequest(
             name,
             url,
             platform,
+            proof,
             turnstile_token: turnstileToken,
         }),
     });

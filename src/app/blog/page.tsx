@@ -2,14 +2,18 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { aiToolsMetadata } from "@/constants/metadataTemplates";
 import DetailClient from "./DetailClient";
+import { fetchBlogPosts } from "@/services/blogService";
 
-export const metadata = aiToolsMetadata("Blog", "Articles, reviews, deep dives, and analysis.");
+export const metadata = aiToolsMetadata("Blog", "Articles, reviews, deep dives, and analysis covering AI tools.");
 
-export default function BlogPage() {
+export const dynamic = 'force-dynamic';
+
+export default async function BlogPage() {
+  const posts = await fetchBlogPosts();
   return (
     <>
       <Header />
-      <DetailClient />
+      <DetailClient posts={posts} />
       <Footer />
     </>
   );
